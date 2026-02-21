@@ -3,9 +3,8 @@
 import { useState } from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
-import TextInput from '@/components/form/input'
-import Button from '@/components/form/button'
 import GlowBackground from '@/components/design/glowBackground'
+import { Button, Field, T } from '@kaynora/ui'
 
 const Login = () => {
     const [failedLogin, setFailedLogin] = useState<Boolean>(false)
@@ -54,7 +53,7 @@ const Login = () => {
                 </div>
 
                 <div className={styles['auth-widget']}>
-                    <Button buttonStyle='alt'>
+                    <Button>
                         <Image
                             src='/Google.svg'
                             alt='(G)'
@@ -62,7 +61,7 @@ const Login = () => {
                             height={20}
                             priority
                         />
-                        <span>Login with Google</span>
+                        <T>Login with Google</T>
                     </Button>
                     <div className={styles['or-separator']}>or</div>
                     <form autoComplete='off' onSubmit={handleSubmit} className={styles['auth-form']}>
@@ -70,10 +69,10 @@ const Login = () => {
                             <p>Incorrect username or password.</p>
                         </div>
 
-                        <TextInput inputType='text' inputName='email'>Email</TextInput>
-                        <TextInput inputType='password' inputName='password'>Password</TextInput>
+                        <Field label='Email' type='email' name='email' />
+                        <Field label='Password' name='password' />
 
-                        <Button buttonStyle='main'>Login</Button>
+                        <Button surface='fill'><T>Login</T></Button>
                     </form>
                 </div>
             </div>

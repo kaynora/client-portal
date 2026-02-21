@@ -1,7 +1,7 @@
 'use client'
 
 import Projects from '@/components/dashboard/projects'
-import styles from './page.module.css'
+import { T } from '@kaynora/ui'
 import { useState } from 'react'
 
 interface AdminPageProps {
@@ -12,10 +12,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
     const [username, setUsername] = useState<string>('User')
 
     return (
-        <div className={styles['dashboard']}>
-            <h1>Welcome back, {username}!</h1>
+        <>
+            <T type='h1'>Welcome back, {username}!</T>
             <Projects>Active Projects</Projects>
-        </div>
+        </>
     )
 }
 

@@ -22,18 +22,12 @@
 
     a, button {
         display: flex;
-        font-weight: 400;
         align-items: center;
         gap: 0.75rem;
-        border-radius: 10px;
         padding: 0.4rem 0.6rem;
-        background-color: transparent;
-        border: 1px solid transparent;
-        transition: var(--transition-1);
 
         &:hover {
             cursor: pointer;
-            background-color: var(--gray-0);
         }
     }
 }

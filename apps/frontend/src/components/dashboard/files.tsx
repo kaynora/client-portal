@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './files.module.css'
+import { Button, T } from '@kaynora/ui'
 
 interface FileHeader {
     id: string,
@@ -43,7 +44,7 @@ const Files = () => {
             <h2>Project Files</h2>
             <div className={styles['file-list']}>
                 {fileHeaders?.map((file, index) => (
-                    <button className={styles['file']} key={index}>{file.file_name}</button>
+                    <Button key={index}><T>{file.file_name}</T></Button>
                 ))}
             </div>
         </div>

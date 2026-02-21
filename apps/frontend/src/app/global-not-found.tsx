@@ -1,10 +1,10 @@
 import { Hedvig_Letters_Sans } from 'next/font/google'
-import './globals.css'
+import '@kaynora/ui/dist/index.css'
 import GlowBackground from "@/components/design/glowBackground"
 
 const Custom404 = () => {
     return (
-        <html>
+        <html data-theme='light'>
             <body>
                 <GlowBackground />
                 <h1

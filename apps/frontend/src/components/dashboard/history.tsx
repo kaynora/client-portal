@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from './history.module.css'
+import { Button, T } from "@kaynora/ui"
 
 interface ProjectHistoryHeader {
     id: string,
@@ -110,36 +111,36 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
             <div className={styles['projects-list']}>
                 {filteredHeaders.length !== 0
                     ? filteredHeaders.map((element, index) => (
-                        <a
+                        <Button
                             href={`/admin/project?project_id=${element.id}`}
                             key={index}
                         >
-                            <div>{element.title}</div>
+                            <T>{element.title}</T>
                             <div className={styles['details']}>
                                 <div className={styles['detail']}>
-                                    <span className={styles['label']}>Client:</span>
-                                    <span className={styles['date']}>
+                                    <T size='s'>Client:</T>
+                                    <T color='dimmed' weight='300' size='s'>
                                         {element.full_name !== null
                                             ? element.full_name
                                             : 'Not Assigned'
                                         }
-                                    </span>
+                                    </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <span className={styles['label']}>Created:</span>
-                                    <span className={styles['date']}>
+                                    <T size='s'>Created:</T>
+                                    <T color='dimmed' weight='300' size='s'>
                                         {new Date(element.created_at).toLocaleDateString()}
-                                    </span>
+                                    </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <span className={styles['label']}>Updated:</span>
-                                    <span className={styles['date']}>
+                                    <T size='s'>Updated:</T>
+                                    <T color='dimmed' weight='300' size='s'>
                                         {getTimeSince(element.updated_at)}
-                                    </span>
+                                    </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <span className={styles['label']}>Status:</span>
-                                    <span
+                                    <T size='s'>Status:</T>
+                                    <div
                                         className={styles['status']}
                                         style={
                                             element.current_status === 'Cancelled' ?
@@ -152,13 +153,11 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                                 {backgroundColor: '#3da45a'} : {}
                                         }
                                     >
-                                        {
-                                            element.current_status
-                                        }
-                                    </span>
+                                        <T color='inverted' weight='500' size='s'>{element.current_status}</T>
+                                    </div>
                                 </div>
                             </div>
-                        </a>))
+                        </Button>))
                     : isLoading
                         ? [...Array(6).keys()].map((value) => (
                             <div key={value} className={styles['skeleton']}></div>))

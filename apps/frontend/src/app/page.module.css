@@ -8,12 +8,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--white);
     width: 90%;
     max-width: 450px;
     padding: 3rem;
-    border: 1px solid var(--gray-1);
-    border-radius: 35px;
 
     input,
     button {
@@ -21,19 +18,13 @@
         height: 45px;
         padding: 0 1rem;
         /* width: 100%; */
-        border: 1px solid var(--gray-1);
-        border-radius: 15px;
     }
     
     input {
-        background-color: transparent;
         margin-bottom: 0.2rem;
-        color: var(--foreground);
     }
     
     button {
-        background-color: transparent;
-        color: var(--foreground);
         margin-top: 2rem;
         cursor: pointer;
 
@@ -41,11 +32,6 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
-    }
-
-    .main-button {
-        background-color: var(--primary);
-        color: var(--white);
     }
 }
 
@@ -56,7 +42,6 @@
     align-items: center;
     width: 100%;
     margin: 2rem 0;
-    color: var(--foreground);
 
     &::before,
     &::after {
@@ -66,7 +51,6 @@
         top: 1px;
         width: 35%;
         height: 0.8px;
-        background-color: var(--gray-1);
         margin-left: 10px;
     }
 }
@@ -75,20 +59,4 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
-    label {
-        position: relative;
-        top: 8px;
-        left: 15px;
-        font-size: 0.9rem;
-        color: var(--gray-2);
-        background-color: var(--white);
-        width: fit-content;
-        padding: 0 10px;
-
-        &:focus {
-            color: var(--primary);
-            font-weight: bold;
-        }
-    }
 }

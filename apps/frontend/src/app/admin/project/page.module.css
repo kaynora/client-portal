@@ -9,11 +9,8 @@
 
     input[type='search'] {
         width: 10rem;
-        border: 1px solid var(--gray-1);
-        border-radius: 15px;
         height: 45px;
         padding: 0 1.7rem;
-        transition: var(--transition-1);
 
         &:focus {
             width: 15rem;
@@ -37,14 +34,7 @@
     gap: 0.5rem;
 
     .label {
-        font-weight: 300;
-        color: var(--gray-2);
         margin-right: 0.5rem;
-    }
-
-    .date {
-        font-weight: 400;
-        color: var(--gray-3);
     }
 
     .assign {
@@ -52,25 +42,12 @@
         flex-flow: row nowrap;
         align-items: center;
         gap: 0.4rem;
-
-        font-weight: 700;
-        border: 1px solid var(--gray-2);
-        border-radius: 5px;
-        background-color: var(--white);
         padding: 0.2rem 0.4rem;
-        transition: var(--transition-1);
 
         &:hover {
-            border-color: var(--gray-3);
             cursor: pointer;
         }
     }
-}
-
-.name {
-    font-weight: 400;
-    font-size: 0.95rem;
-    color: var(--gray-3);
 }
 
 .items {
@@ -87,31 +64,13 @@
         align-items: center;
         gap: 0.5rem 1rem;
 
-        color: var(--gray-3);
-        font-weight: 300;
-
         margin-bottom: 0.2rem;
         padding: 0.5rem 1.7rem;
-        background-color: var(--white);
-        border: 1px solid var(--gray-1);
-        border-radius: 3px;
         width: 100%;
         min-height: 3rem;
-        transition: var(--transition-1);
-
-        &:first-of-type {
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        &:last-of-type {
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
 
         &:hover {
             cursor: pointer;
-            border-color: var(--gray-2);
         }
     }
 }
@@ -126,24 +85,13 @@
     align-items: center;
     gap: 0.1rem;
 
-    font-weight: 700;
-    border: 1px solid var(--gray-2);
-    border-radius: 5px;
-    background-color: var(--white);
-    transition: var(--transition-1);
-
     &:hover {
-        border-color: var(--gray-3);
         cursor: pointer;
     }
 }
 
 .status-edit {
-    font-weight: 700;
-    color: var(--white);
-    background-color: var(--gray-2);
     padding: 0.2rem 0.4rem;
-    border-radius: 5px 0 0 5px;
 }
 
 .status {
@@ -160,18 +108,11 @@
             flex-flow: row nowrap;
             gap: 0.3rem;
 
-            color: var(--gray-3);
             text-align: left;
-            font-weight: 400;
-            background-color: var(--white);
             padding: 0.5rem;
-            border: 1px solid transparent;
-            border-radius: 10px;
-            transition: var(--transition-1);
 
             &:hover {
                 cursor: pointer;
-                border-color: var(--gray-1);
             }
 
             &.cancelled circle { fill: #262626 }

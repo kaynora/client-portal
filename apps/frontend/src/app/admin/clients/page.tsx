@@ -1,12 +1,16 @@
 'use client'
 
-import styles from './page.module.css'
 import Clients from "@/components/dashboard/clients"
-import TextInput from '@/components/form/input'
-import Button from '@/components/form/button'
 import Image from 'next/image'
-import Modal from '@/components/dashboard/modal'
 import { useEffect, useState } from 'react'
+
+import { Button, T, Field } from '@kaynora/ui'
+import dynamic from 'next/dynamic'
+
+const Modal = dynamic(
+  () => import('@kaynora/ui').then(mod => mod.Modal),
+  { ssr: false }
+)
 
 const ClientsPage = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
@@ -53,46 +57,43 @@ const ClientsPage = () => {
     }, [showModal])
 
     return (
-        <div>
-            <div className={styles['new-item']}>
-                <button onClick={() => setShowModal(true)}>
-                    <Image
-                        className={styles['plus-icon']}
-                        src={'/icons/Add.svg'}
-                        alt='Add'
-                        width={24}
-                        height={24}
-                    />
-                    <span>
-                        New Client
-                    </span>
-                </button>
-            </div>
+        <>
+            <Button onClick={() => setShowModal(true)}>
+                <Image
+                    src={'/icons/Add.svg'}
+                    alt='Add'
+                    width={24}
+                    height={24}
+                />
+                <span>
+                    New Client
+                </span>
+            </Button>
 
-            <Modal showModal={showModal} setShowModal={setShowModal}>
+            <Modal isOpen={showModal} onOpenChange={setShowModal}>
                 <h3>Register New Client</h3>
-                <form autoComplete='off' onSubmit={handleSubmit} className={styles['form']}>
-                    <TextInput inputDisabled={!showModal} inputType='text' inputName='name'>Name</TextInput>
-                    <TextInput inputDisabled={!showModal} inputType='text' inputName='email'>Email</TextInput>
+                <form autoComplete='off' onSubmit={handleSubmit}>
+                    <Field disabled={!showModal} label='Name' name='name' />
+                    <Field disabled={!showModal} label='Email' type='email' name='email' />
 
-                    <div style={failedServer ? {display: 'block'} : {display: 'none'}} className={styles['submit-fail']}>
+                    <div style={failedServer ? {display: 'block'} : {display: 'none'}}>
                         <p>Something went wrong.</p>
                     </div>
 
-                    <div style={failedEmptyName ? {display: 'block'} : {display: 'none'}} className={styles['submit-fail']}>
+                    <div style={failedEmptyName ? {display: 'block'} : {display: 'none'}}>
                         <p>Please enter a valid name.</p>
                     </div>
 
-                    <div style={failedEmptyEmail ? {display: 'block'} : {display: 'none'}} className={styles['submit-fail']}>
+                    <div style={failedEmptyEmail ? {display: 'block'} : {display: 'none'}}>
                         <p>Please enter a valid email.</p>
                     </div>
 
-                    <Button buttonDisabled={!showModal} buttonStyle='main'>Register Client</Button>
+                    <Button disabled={!showModal} surface='fill'><T>Register Client</T></Button>
                 </form>
             </Modal>
 
             <Clients />
-        </div>
+        </>
     )
 }
 

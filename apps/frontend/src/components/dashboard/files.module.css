@@ -17,13 +17,8 @@
     width: calc(50% - 0.5rem);
     height: 10rem;
     padding: 2rem;
-    border: 1px solid var(--gray-1);
-    border-radius: 25px;
-    background-color: var(--white);
-    transition: var(--transition-1);
 
     &:hover {
         cursor: pointer;
-        border-color: var(--gray-2);
     }
 }

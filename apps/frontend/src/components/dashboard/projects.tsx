@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import styles from './projects.module.css'
 import Image from "next/image"
+import { Button } from "@kaynora/ui"
 
 interface ProjectHeader {
     id: string,
@@ -347,10 +348,9 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
                                 :
                                     projectHeaders.map((element, index) => (
-                                        <a
-                                            href={`/admin/project?project_id=${element.id}`}
-                                            draggable={false}
+                                        <Button
                                             key={index}
+                                            href={`/admin/project?project_id=${element.id}`}
                                         >
                                             <div
                                                 className={styles['drag-handle']}
@@ -369,7 +369,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                             <span>
                                                 {element.title}
                                             </span>
-                                        </a>
+                                        </Button>
                                     ))
                             }
                         </div>

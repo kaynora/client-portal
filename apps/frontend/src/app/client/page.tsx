@@ -1,5 +1,3 @@
-import styles from './page.module.css'
-
 interface AdminPageProps {
     children: React.ReactNode
 }

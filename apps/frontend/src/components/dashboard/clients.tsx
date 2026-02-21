@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from './clients.module.css'
+import { Button, T } from "@kaynora/ui"
 
 interface ClientHeader {
     id: string,
@@ -71,13 +72,13 @@ const Clients = () => {
 
             {filteredClients.length !== 0
                 ? filteredClients.map((element, index) => (
-                    <a
+                    <Button
                         href={`/admin/client?client_id=${element.id}`}
                         key={index}
                     >
-                        <div>{element.full_name}</div>
-                        <div>{element.email}</div>
-                    </a>))
+                        <T>{element.full_name}</T>
+                        <T>{element.email}</T>
+                    </Button>))
                 : isLoading
                     ? [...Array(6).keys()].map((value) => (
                         <div key={value} className={styles['skeleton']}></div>))

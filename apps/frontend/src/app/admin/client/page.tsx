@@ -1,6 +1,5 @@
 'use client'
 
-import styles from './page.module.css'
 import History from '@/components/dashboard/history'
 import { useEffect, useState } from 'react'
 
@@ -44,7 +43,7 @@ const Client = () => {
         <div>
             <h2>Client Info</h2>
 
-            <div className={styles['details']}>
+            <div>
                 {clientHeader?.full_name}
             </div>
 

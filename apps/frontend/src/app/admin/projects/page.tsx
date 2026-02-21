@@ -2,12 +2,16 @@
 
 import Projects from '@/components/dashboard/projects'
 import History from '@/components/dashboard/history'
-import TextInput from '@/components/form/input'
-import Button from '@/components/form/button'
-import Modal from '@/components/dashboard/modal'
 import Image from 'next/image'
-import styles from './page.module.css'
 import { useEffect, useState } from 'react'
+
+import { Button, T, Field } from '@kaynora/ui'
+import dynamic from 'next/dynamic'
+
+const Modal = dynamic(
+  () => import('@kaynora/ui').then(mod => mod.Modal),
+  { ssr: false }
+)
 
 const ProjectsPage = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
@@ -51,42 +55,37 @@ const ProjectsPage = () => {
     }, [showModal])
 
     return (
-        <div className={styles['projects']}>
-            <div className={styles['new-item']}>
-                <button onClick={() => setShowModal(true)}>
-                    <Image
-                        className={styles['plus-icon']}
-                        src={'/icons/Add.svg'}
-                        alt='Add'
-                        width={24}
-                        height={24}
-                    />
-                    <span>
-                        New Project
-                    </span>
-                </button>
-            </div>
+        <>
+            <Button onClick={() => setShowModal(true)}>
+                <Image
+                    src={'/icons/Add.svg'}
+                    alt='Add'
+                    width={24}
+                    height={24}
+                />
+                <T>New Project</T>
+            </Button>
 
-            <Modal showModal={showModal} setShowModal={setShowModal}>
-                <h3>Create New Project</h3>
-                <form autoComplete='off' onSubmit={handleSubmit} className={styles['form']}>
-                    <TextInput inputDisabled={!showModal} inputType='text' inputName='title'>Title</TextInput>
+            <Modal isOpen={showModal} onOpenChange={setShowModal}>
+                <T>Create New Project</T>
+                <form autoComplete='off' onSubmit={handleSubmit}>
+                    <Field disabled={!showModal} label='Title' name='title' />
 
-                    <div style={failedServer ? {display: 'block'} : {display: 'none'}} className={styles['submit-fail']}>
+                    <div style={failedServer ? {display: 'block'} : {display: 'none'}}>
                         <p>Something went wrong.</p>
                     </div>
 
-                    <div style={failedEmptyTitle ? {display: 'block'} : {display: 'none'}} className={styles['submit-fail']}>
+                    <div style={failedEmptyTitle ? {display: 'block'} : {display: 'none'}}>
                         <p>Please enter a valid title.</p>
                     </div>
 
-                    <Button buttonDisabled={!showModal} buttonStyle='main'>Create Project</Button>
+                    <Button disabled={!showModal} surface='fill'><T>Create Project</T></Button>
                 </form>
             </Modal>
 
             <Projects>Active Projects</Projects>
             <History>Project History</History>
-        </div>
+        </>
     )
 }
 

@@ -1,4 +1,5 @@
 import Sidebar from '@/components/dashboard/sidebar'
+import { Button, T } from '@kaynora/ui'
 import Image from 'next/image'
 
 interface AdminPageProps {
@@ -9,35 +10,35 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
     return (
         <div>
             <Sidebar>
-                <a href='#'>
+                <Button href='#'>
                     <Image
                         width={16}
                         height={16}
                         src='/icons/Dashboard.svg'
                         alt='(i)'
                     />
-                    <span>Dashboard</span>
-                </a>
+                    <T>Dashboard</T>
+                </Button>
 
-                <a href='#'>
+                <Button href='#'>
                     <Image
                         width={16}
                         height={16}
                         src='/icons/Projects.svg'
                         alt='(i)'
                     />
-                    <span>Projects</span>
-                </a>
+                    <T>Projects</T>
+                </Button>
 
-                <a href='#'>
+                <Button href='#'>
                     <Image
                         width={16}
                         height={16}
                         src='/icons/Clients.svg'
                         alt='(i)'
                     />
-                    <span>Clients</span>
-                </a>
+                    <T>Clients</T>
+                </Button>
             </Sidebar>
             {children}
         </div>

@@ -1,11 +1,18 @@
 'use client'
 
 import Files from '@/components/dashboard/files'
-import Modal from '@/components/dashboard/modal'
 import Dropdown from '@/components/dashboard/dropdown'
 import Image from 'next/image'
 import styles from './page.module.css'
 import { useEffect, useState } from 'react'
+
+import { Button, T } from '@kaynora/ui'
+import dynamic from 'next/dynamic'
+
+const Modal = dynamic(
+  () => import('@kaynora/ui').then(mod => mod.Modal),
+  { ssr: false }
+)
 
 interface ProjectHeader {
     id: string,
@@ -194,8 +201,7 @@ const ProjectPage = () => {
                 <div className={styles['detail']}>
                     <span className={styles['label']}>Status:</span>
                     <div className='status-container'>
-                        <button
-                            className={styles['status-display']}
+                        <Button
                             onClick={() => {
                                 setShowStatusDropdown(!showStatusDropdown)
                             }}
@@ -223,9 +229,9 @@ const ProjectPage = () => {
                                 width={20}
                                 height={20}
                             />
-                        </button>
+                        </Button>
 
-                        <Dropdown showDropdown={showStatusDropdown} setShowDropdown={setShowStatusDropdown}>
+                        {/* <Dropdown showDropdown={showStatusDropdown} setShowDropdown={setShowStatusDropdown}>
                             <div className={styles['status']}>
                                 <div className={styles['status-list']}>
                                     <button
@@ -273,7 +279,7 @@ const ProjectPage = () => {
                                     </button>
                                 </div>
                             </div>
-                        </Dropdown>
+                        </Dropdown> */}
                     </div>
                 </div>
 
@@ -283,17 +289,17 @@ const ProjectPage = () => {
                         {projectHeader.full_name !== null
                             ? projectHeader.full_name
                             :
-                                <button className={styles['assign']} onClick={() => {
+                                <Button onClick={() => {
                                     getClients()
                                     setShowClientModal(true)
                                 }}>
-                                    Assign a Client
-                                </button>
+                                    <T>Assign a Client</T>
+                                </Button>
                         }
                     </div>
                 </div>
 
-                <Modal showModal={showClientModal} setShowModal={setShowClientModal}>
+                <Modal isOpen={showClientModal} onOpenChange={setShowClientModal}>
                     <div className={styles['items']}>
                         <div className={styles['header']}>
                             <h3>Assign a Client to This Project</h3>
@@ -308,15 +314,14 @@ const ProjectPage = () => {
 
                         <div className={styles['item-list']}>
                             {filteredClients.map((element, index) => (
-                                <button
+                                <Button
                                     onClick={assignClient}
-                                    className={styles['item']}
                                     key={index}
                                     data-id={element.id}
                                 >
                                     <div className={styles['name']}>{element.full_name}</div>
                                     <div>{element.email}</div>
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     </div>

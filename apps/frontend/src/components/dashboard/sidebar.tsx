@@ -1,5 +1,6 @@
 'use client'
 
+import { Button, T } from '@kaynora/ui'
 import styles from './sidebar.module.css'
 import Image from 'next/image'
 
@@ -36,15 +37,15 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                 </div>
 
                 <div className={styles['links']}>
-                    <button onClick={logOut}>
+                    <Button width='full' surface='hollow' onClick={logOut}>
                         <Image
                             src='/icons/Logout.svg'
                             alt='(i)'
                             width={24}
                             height={24}
                         />
-                        <span>Sign Out</span>
-                    </button>
+                        <T>Sign Out</T>
+                    </Button>
                 </div>
             </div>
         </div>
