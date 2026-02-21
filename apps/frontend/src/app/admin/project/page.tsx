@@ -230,55 +230,75 @@ const ProjectPage = () => {
                             />
                         </Button>
 
-                        {/* <Dropdown showDropdown={showStatusDropdown} setShowDropdown={setShowStatusDropdown}>
+                        <Dropdown showDropdown={showStatusDropdown} setShowDropdown={setShowStatusDropdown}>
                             <div className={styles['status']}>
                                 <div className={styles['status-list']}>
-                                    <button
-                                        className={styles['cancelled']}
+                                    <Button
+                                        width='full'
+                                        surface='hollow'
                                         onClick={() => setStatus('Cancelled')}
                                         disabled={!showStatusDropdown}
                                     >
-                                        <svg height="20" width="20">
+                                        <svg
+                                            height='20'
+                                            width='20'
+                                            className={styles['cancelled']}
+                                        >
                                             <circle r="4" cx="10" cy="10" />
                                         </svg>
                                         <span>Cancelled</span>
-                                    </button>
+                                    </Button>
 
-                                    <button
-                                        className={styles['paused']}
+                                    <Button
+                                        width='full'
+                                        surface='hollow'
                                         onClick={() => setStatus('Paused')}
                                         disabled={!showStatusDropdown}
                                     >
-                                        <svg height="20" width="20">
+                                        <svg
+                                            height='20'
+                                            width='20'
+                                            className={styles['paused']}
+                                        >
                                             <circle r="4" cx="10" cy="10" />
                                         </svg>
                                         <span>Paused</span>
-                                    </button>
+                                    </Button>
 
-                                    <button
-                                        className={styles['in-progress']}
+                                    <Button
+                                        width='full'
+                                        surface='hollow'
                                         onClick={() => setStatus('In Progress')}
                                         disabled={!showStatusDropdown}
                                     >
-                                        <svg height="20" width="20">
+                                        <svg
+                                            height='20'
+                                            width='20'
+                                            className={styles['in-progress']}
+                                        >
                                             <circle r="4" cx="10" cy="10" />
                                         </svg>
                                         <span>In Progress</span>
-                                    </button>
+                                    </Button>
 
-                                    <button
-                                        className={styles['completed']}
+                                    <Button
+                                        width='full'
+                                        surface='hollow'
                                         onClick={() => setStatus('Completed')}
                                         disabled={!showStatusDropdown}
                                     >
-                                        <svg height="20" width="20">
+                                        <svg
+                                            height='20'
+                                            width='20'
+                                            className={styles['completed']}
+                                        >
                                             <circle r="4" cx="10" cy="10" />
                                         </svg>
                                         <span>Completed</span>
-                                    </button>
+                                    </Button>
                                 </div>
                             </div>
-                        </Dropdown> */}
+                        </Dropdown>
                     </div>
                 </div>
 

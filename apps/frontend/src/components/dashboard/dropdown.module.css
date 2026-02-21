@@ -2,5 +2,6 @@
     position: absolute;
     width: 12rem;
     height: 0;
-    margin-top: 1rem;
+    margin-top: 5px;
+    transition: all var(--ease-out-c) var(--ease-out-t);
 }

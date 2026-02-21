@@ -56,17 +56,14 @@
     }
 }
 
-.status-edit {
-    padding: 0.2rem 0.4rem;
-}
-
 .status {
-    padding: 1.2rem;
-
     .status-list {
         display: flex;
         flex-flow: column nowrap;
         gap: 0.1rem;
+        border: 1px solid var(--gray-2);
+        border-radius: 5px;
+        background-color: var(--background);
 
         button {
             display: flex;
@@ -80,11 +77,11 @@
             &:hover {
                 cursor: pointer;
             }
-
-            &.cancelled circle { fill: #262626 }
-            &.paused circle { fill: #e69a3d }
-            &.in-progress circle { fill: #667aff }
-            &.completed circle { fill: #3da45a }
         }
     }
 }
+
+.cancelled circle { fill: #262626 }
+.paused circle { fill: #e69a3d }
+.in-progress circle { fill: #667aff }
+.completed circle { fill: #3da45a }

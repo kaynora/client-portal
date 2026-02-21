@@ -40,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                     <Button
                         width='full'
                         onClick={logOut}
-                        internal={{root: {style: { color: '#151515'}}}}
+                        internal={{root: {style: { color: '#141414'}}}}
                     >
                         <Image
                             src='/icons/Logout.svg'
