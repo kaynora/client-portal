@@ -114,7 +114,7 @@
     width: 24rem;
     padding: 1.5rem;
     background-color: var(--gray-1);
-    background: linear-gradient(135deg, var(--gray-1), var(--white));
+    background: linear-gradient(135deg, var(--gray-1), var(--background));
     border-radius: 5px;
     z-index: 11;
 

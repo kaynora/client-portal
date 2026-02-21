@@ -2,12 +2,6 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-
-    input[type='search'] {
-        &:focus {
-            width: 15rem;
-        }
-    }
 }
 
 .client-list {

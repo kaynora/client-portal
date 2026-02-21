@@ -1,6 +1,6 @@
 'use client'
 
-import Clients from "@/components/dashboard/clients"
+import Clients from '@/components/dashboard/clients'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -27,6 +27,7 @@ const ClientsPage = () => {
         setFailedEmptyEmail(!Boolean(data.get('email')))
 
         if (!Boolean(data.get('name')) || !Boolean(data.get('email'))) return
+        if (failedEmptyEmail || failedEmptyName) return
 
         try {
             const response = await fetch('http://localhost:3000/api/admin/client/create-client', {
@@ -58,7 +59,15 @@ const ClientsPage = () => {
 
     return (
         <>
-            <Button onClick={() => setShowModal(true)}>
+            <Button
+                onClick={() => setShowModal(true)}
+                internal={{root: {style: {
+                    display: 'flex',
+                    flexFlow: 'row nowrap',
+                    alignItems: 'center',
+                    gap: '5px'
+                }}}}
+            >
                 <Image
                     src={'/icons/Add.svg'}
                     alt='Add'
@@ -71,24 +80,35 @@ const ClientsPage = () => {
             </Button>
 
             <Modal isOpen={showModal} onOpenChange={setShowModal}>
-                <h3>Register New Client</h3>
-                <form autoComplete='off' onSubmit={handleSubmit}>
-                    <Field disabled={!showModal} label='Name' name='name' />
-                    <Field disabled={!showModal} label='Email' type='email' name='email' />
+                <T weight='500' size='l'>Register New Client</T>
+                <form autoComplete='off' onSubmit={handleSubmit} style={{
+                    marginTop: '30px',
+                    display: 'flex',
+                    flexFlow: 'column',
+                    gap: '12px',
+                    width: '350px',
+                }}>
+                    <Field
+                        disabled={!showModal}
+                        label='Name'
+                        name='name'
+                        errors={[
+                            {failState: failedEmptyName, message: 'Name field cannot be empty.'},
+                        ]}
+                    />
 
-                    <div style={failedServer ? {display: 'block'} : {display: 'none'}}>
-                        <p>Something went wrong.</p>
-                    </div>
+                    <Field
+                        disabled={!showModal}
+                        label='Email'
+                        type='email'
+                        name='email'
+                        errors={[
+                            {failState: failedEmptyEmail, message: 'Email field cannot be empty.'},
+                            {failState: failedServer, message: 'Something went wrong.'},
+                        ]}
+                    />
 
-                    <div style={failedEmptyName ? {display: 'block'} : {display: 'none'}}>
-                        <p>Please enter a valid name.</p>
-                    </div>
-
-                    <div style={failedEmptyEmail ? {display: 'block'} : {display: 'none'}}>
-                        <p>Please enter a valid email.</p>
-                    </div>
-
-                    <Button disabled={!showModal} surface='fill'><T>Register Client</T></Button>
+                    <Button width='full' disabled={!showModal} surface='fill'><T>Register Client</T></Button>
                 </form>
             </Modal>
 

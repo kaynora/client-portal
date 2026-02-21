@@ -1,7 +1,11 @@
 .sidebar {
-    height: 90vh;
-    width: 17rem;
+    position: fixed;
+    top: 0;
+    height: 100vh;
     overflow-y: auto;
+    background-color: #151515;
+    padding: 15px;
+    width: 280px;
 }
 
 .logo {
@@ -21,12 +25,16 @@
     gap: 0.1rem;
 
     a, button {
+        background-color: currentColor;
+        border-color: currentColor;
         display: flex;
         align-items: center;
         gap: 0.75rem;
         padding: 0.4rem 0.6rem;
 
         &:hover {
+            background-color: var(--gray-5);
+            border-color: var(--gray-5);
             cursor: pointer;
         }
     }

@@ -56,7 +56,15 @@ const ProjectsPage = () => {
 
     return (
         <>
-            <Button onClick={() => setShowModal(true)}>
+            <Button
+                onClick={() => setShowModal(true)}
+                internal={{root: {style: {
+                    display: 'flex',
+                    flexFlow: 'row nowrap',
+                    alignItems: 'center',
+                    gap: '5px'
+                }}}}
+            >
                 <Image
                     src={'/icons/Add.svg'}
                     alt='Add'
@@ -67,19 +75,25 @@ const ProjectsPage = () => {
             </Button>
 
             <Modal isOpen={showModal} onOpenChange={setShowModal}>
-                <T>Create New Project</T>
-                <form autoComplete='off' onSubmit={handleSubmit}>
-                    <Field disabled={!showModal} label='Title' name='title' />
+                <T weight='500' size='l'>Create New Project</T>
+                <form autoComplete='off' onSubmit={handleSubmit} style={{
+                    marginTop: '30px',
+                    display: 'flex',
+                    flexFlow: 'column',
+                    gap: '12px',
+                    width: '350px',
+                }}>
+                    <Field
+                        disabled={!showModal}
+                        label='Title'
+                        name='title'
+                        errors={[
+                            {failState: failedEmptyTitle, message: 'Title field cannot be empty.'},
+                            {failState: failedServer, message: 'Something went wrong.'},
+                        ]}
+                    />
 
-                    <div style={failedServer ? {display: 'block'} : {display: 'none'}}>
-                        <p>Something went wrong.</p>
-                    </div>
-
-                    <div style={failedEmptyTitle ? {display: 'block'} : {display: 'none'}}>
-                        <p>Please enter a valid title.</p>
-                    </div>
-
-                    <Button disabled={!showModal} surface='fill'><T>Create Project</T></Button>
+                    <Button width='full' disabled={!showModal} surface='fill'><T>Create Project</T></Button>
                 </form>
             </Modal>
 

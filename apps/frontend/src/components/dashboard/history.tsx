@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
 import styles from './history.module.css'
-import { Button, T } from "@kaynora/ui"
+import { useEffect, useState } from 'react'
+import { Button, Field, T } from '@kaynora/ui'
 
 interface ProjectHistoryHeader {
     id: string,
@@ -77,8 +77,7 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
         }
     }
 
-    const searchProjects = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value
+    const searchProjects = (value: string) => {
         let result = []
 
         for (let item of projectHeaders) {
@@ -98,13 +97,9 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
         <div className={styles['projects-history']}>
             <div className={styles['header']}>
-                <h2>{children}</h2>
+                <T type='h2'>{children}</T>
                 <div className={styles['search-options']}>
-                    <input
-                        type="search"
-                        placeholder={'Search...'}
-                        onChange={searchProjects}
-                    />
+                    <Field label='Search' onChange={searchProjects} />
                 </div>
             </div>
 
@@ -112,14 +107,16 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
                 {filteredHeaders.length !== 0
                     ? filteredHeaders.map((element, index) => (
                         <Button
-                            href={`/admin/project?project_id=${element.id}`}
                             key={index}
+                            href={`/admin/project?project_id=${element.id}`}
+                            internal={{root: {draggable: 'false'}}}
+
                         >
                             <T>{element.title}</T>
                             <div className={styles['details']}>
                                 <div className={styles['detail']}>
-                                    <T size='s'>Client:</T>
-                                    <T color='dimmed' weight='300' size='s'>
+                                    <T color='dimmed' weight='300' size='s'>Client:</T>
+                                    <T size='s'>
                                         {element.full_name !== null
                                             ? element.full_name
                                             : 'Not Assigned'
@@ -127,19 +124,19 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                     </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <T size='s'>Created:</T>
-                                    <T color='dimmed' weight='300' size='s'>
+                                    <T color='dimmed' weight='300' size='s'>Created:</T>
+                                    <T size='s'>
                                         {new Date(element.created_at).toLocaleDateString()}
                                     </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <T size='s'>Updated:</T>
-                                    <T color='dimmed' weight='300' size='s'>
+                                    <T color='dimmed' weight='300' size='s'>Updated:</T>
+                                    <T size='s'>
                                         {getTimeSince(element.updated_at)}
                                     </T>
                                 </div>
                                 <div className={styles['detail']}>
-                                    <T size='s'>Status:</T>
+                                    <T color='dimmed' weight='300' size='s'>Status:</T>
                                     <div
                                         className={styles['status']}
                                         style={

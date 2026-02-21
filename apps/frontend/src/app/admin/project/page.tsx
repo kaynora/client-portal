@@ -6,7 +6,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import { useEffect, useState } from 'react'
 
-import { Button, T } from '@kaynora/ui'
+import { Button, Field, T } from '@kaynora/ui'
 import dynamic from 'next/dynamic'
 
 const Modal = dynamic(
@@ -163,8 +163,7 @@ const ProjectPage = () => {
         }
     }
 
-    const searchClients = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value
+    const searchClients = (value: string) => {
         let result = []
 
         for (let item of clientHeaders) {
@@ -199,30 +198,30 @@ const ProjectPage = () => {
 
             <div className={styles['details']}>
                 <div className={styles['detail']}>
-                    <span className={styles['label']}>Status:</span>
+                    <T weight='300' color='dimmed'>Status:</T>
                     <div className='status-container'>
                         <Button
-                            onClick={() => {
-                                setShowStatusDropdown(!showStatusDropdown)
-                            }}
-                        >
-                            <span
-                                className={styles['status-edit']}
-                                style={
+                            size='s'
+                            onClick={() => setShowStatusDropdown(!showStatusDropdown)}
+                            internal={{root: {style: {
+                                display: 'flex',
+                                flexFlow: 'row nowrap',
+                                gap: '5px',
+                                alignItems: 'center',
+                                borderColor: 'currentColor',
+                                backgroundColor: 'currentColor',
+                                color:
                                     projectHeader.current_status === 'Cancelled' ?
-                                        {backgroundColor: '#262626'} :
+                                        '#262626' :
                                     projectHeader.current_status === 'Paused' ?
-                                        {backgroundColor: '#e69a3d'} :
+                                        '#e69a3d' :
                                     projectHeader.current_status === 'In Progress' ?
-                                        {backgroundColor: '#667aff'} :
+                                        '#667aff' :
                                     projectHeader.current_status === 'Completed' ?
-                                        {backgroundColor: '#3da45a'} : {}
-                                }
-                            >
-                                {
-                                    projectHeader.current_status
-                                }
-                            </span>
+                                        '#3da45a' : '#fff'
+                            }}}}
+                        >
+                            <T color='inverted' weight='500'>{projectHeader.current_status}</T>
                             <Image
                                 src={'/icons/Edit.svg'}
                                 alt='change status'
@@ -284,12 +283,12 @@ const ProjectPage = () => {
                 </div>
 
                 <div className={styles['detail']}>
-                    <span className={styles['label']}>Client:</span>
+                    <T weight='300' color='dimmed'>Client:</T>
                     <div className={styles['name']}>
                         {projectHeader.full_name !== null
-                            ? projectHeader.full_name
+                            ? <T>{projectHeader.full_name}</T>
                             :
-                                <Button onClick={() => {
+                                <Button size='s' onClick={() => {
                                     getClients()
                                     setShowClientModal(true)
                                 }}>
@@ -302,25 +301,27 @@ const ProjectPage = () => {
                 <Modal isOpen={showClientModal} onOpenChange={setShowClientModal}>
                     <div className={styles['items']}>
                         <div className={styles['header']}>
-                            <h3>Assign a Client to This Project</h3>
+                            <T size='l' weight='500'>Assign a Client to This Project</T>
                             <div className={styles['search-options']}>
-                                <input
-                                    type="search"
-                                    placeholder={'Search...'}
-                                    onChange={searchClients}
-                                />
+                                <Field label='Search' onChange={searchClients} />
                             </div>
                         </div>
 
                         <div className={styles['item-list']}>
                             {filteredClients.map((element, index) => (
                                 <Button
+                                    width='full'
                                     onClick={assignClient}
                                     key={index}
                                     data-id={element.id}
+                                    internal={{root: {style: {
+                                        display: 'flex',
+                                        flexFlow: 'row nowrap',
+                                        justifyContent: 'space-between'
+                                    }}}}
                                 >
-                                    <div className={styles['name']}>{element.full_name}</div>
-                                    <div>{element.email}</div>
+                                    <T>{element.full_name}</T>
+                                    <T>{element.email}</T>
                                 </Button>
                             ))}
                         </div>
@@ -328,17 +329,13 @@ const ProjectPage = () => {
                 </Modal>
 
                 <div className={styles['detail']}>
-                    <span className={styles['label']}>Updated:</span>
-                    <div className={styles['date']}>
-                        {getTimeSince(projectHeader.updated_at)}
-                    </div>
+                    <T weight='300' color='dimmed'>Updated:</T>
+                    <T>{getTimeSince(projectHeader.updated_at)}</T>
                 </div>
 
                 <div className={styles['detail']}>
-                    <span className={styles['label']}>Created:</span>
-                    <div className={styles['date']}>
-                        {new Date(projectHeader.created_at).toLocaleDateString()}
-                    </div>
+                    <T weight='300' color='dimmed'>Created:</T>
+                    <T>{new Date(projectHeader.created_at).toLocaleDateString()}</T>
                 </div>
             </div>
 

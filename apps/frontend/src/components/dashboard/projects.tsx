@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import styles from './projects.module.css'
 import Image from "next/image"
-import { Button } from "@kaynora/ui"
+import { Button, T } from "@kaynora/ui"
 
 interface ProjectHeader {
     id: string,
@@ -128,6 +128,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
         const placeholder = document.createElement('a')
         placeholder.style.border = '1px dashed var(--gray-2)'
+        placeholder.style.borderRadius = '5px'
         dragPlaceholderRef.current = placeholder
         dragPlaceholderRef.current.style.display = 'none'
         dragTargetRef.current?.before(placeholder)
@@ -297,7 +298,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
     return (
         <div className={styles['projects-container']}>
-            <h2>{children}</h2>
+            <T type='h2'>{children}</T>
 
             <div ref={sliderRef} className={styles['projects-slider']}>
                 <button
@@ -351,6 +352,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                         <Button
                                             key={index}
                                             href={`/admin/project?project_id=${element.id}`}
+                                            internal={{root: {draggable: 'false'}}}
                                         >
                                             <div
                                                 className={styles['drag-handle']}

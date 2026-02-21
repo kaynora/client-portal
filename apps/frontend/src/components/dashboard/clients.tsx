@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from './clients.module.css'
-import { Button, T } from "@kaynora/ui"
+import { Button, Field, T } from "@kaynora/ui"
 
 interface ClientHeader {
     id: string,
@@ -33,8 +33,7 @@ const Clients = () => {
         }
     }
 
-    const searchClients = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value
+    const searchClients = (value: string) => {
         let result = []
 
         for (let item of clientHeaders) {
@@ -62,19 +61,16 @@ const Clients = () => {
             <div className={styles['header']}>
                 <h2>Clients</h2>
                 <div className={styles['search-options']}>
-                    <input
-                        type="search"
-                        placeholder={'Search...'}
-                        onChange={searchClients}
-                    />
+                    <Field label='Search' onChange={searchClients} />
                 </div>
             </div>
 
             {filteredClients.length !== 0
                 ? filteredClients.map((element, index) => (
                     <Button
-                        href={`/admin/client?client_id=${element.id}`}
                         key={index}
+                        href={`/admin/client?client_id=${element.id}`}
+                        internal={{root: {draggable: 'false'}}}
                     >
                         <T>{element.full_name}</T>
                         <T>{element.email}</T>

@@ -20,8 +20,12 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
             <Sidebar>
                 <Button
                     width='full'
-                    surface={isClient && window.location.pathname === '/admin' ? 'fill' : 'hollow'}
                     href='/admin'
+                    internal={{
+                        root: {style: {
+                            color: isClient && window.location.pathname === '/admin' ? '#303030' : '#151515'
+                        }}
+                    }}
                 >
                     <Image
                         width={16}
@@ -29,13 +33,17 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                         src='/icons/Dashboard.svg'
                         alt='(i)'
                     />
-                    <T>Dashboard</T>
+                    <T color='inverted'>Dashboard</T>
                 </Button>
 
                 <Button
                     width='full'
-                    surface={isClient && window.location.pathname.startsWith('/admin/project') ? 'fill' : 'hollow'}
                     href='/admin/projects'
+                    internal={{
+                        root: {style: {
+                            color: isClient && window.location.pathname.startsWith('/admin/project') ? '#303030' : '#151515'
+                        }}
+                    }}
                 >
                     <Image
                         width={16}
@@ -43,13 +51,17 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                         src='/icons/Projects.svg'
                         alt='(i)'
                     />
-                    <T>Projects</T>
+                    <T color='inverted'>Projects</T>
                 </Button>
 
                 <Button
                     width='full'
-                    surface={isClient && window.location.pathname.startsWith('/admin/client') ? 'fill' : 'hollow'}
                     href='/admin/clients'
+                    internal={{
+                        root: {style: {
+                            color: isClient && window.location.pathname.startsWith('/admin/client') ? '#303030' : '#151515'
+                        }}
+                    }}
                 >
                     <Image
                         width={16}
@@ -57,7 +69,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                         src='/icons/Clients.svg'
                         alt='(i)'
                     />
-                    <T>Clients</T>
+                    <T color='inverted'>Clients</T>
                 </Button>
             </Sidebar>
 

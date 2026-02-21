@@ -37,14 +37,18 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                 </div>
 
                 <div className={styles['links']}>
-                    <Button width='full' surface='hollow' onClick={logOut}>
+                    <Button
+                        width='full'
+                        onClick={logOut}
+                        internal={{root: {style: { color: '#151515'}}}}
+                    >
                         <Image
                             src='/icons/Logout.svg'
                             alt='(i)'
                             width={24}
                             height={24}
                         />
-                        <T>Sign Out</T>
+                        <T color='inverted'>Sign Out</T>
                     </Button>
                 </div>
             </div>

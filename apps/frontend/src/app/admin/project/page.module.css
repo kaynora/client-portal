@@ -1,21 +1,13 @@
 .header {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
     position: relative;
     margin-bottom: 1rem;
 
     .search-options {
         display: flex;
         justify-content: right;
-    }
-
-    input[type='search'] {
-        width: 10rem;
-        height: 45px;
-        padding: 0 1.7rem;
-
-        &:focus {
-            width: 15rem;
-            outline: none;
-        }
     }
 }
 
@@ -31,47 +23,21 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    gap: 0.5rem;
-
-    .label {
-        margin-right: 0.5rem;
-    }
-
-    .assign {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.2rem 0.4rem;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
+    gap: 6px;
 }
 
 .items {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
 
     .item-list {
-        height: 16rem;
-        overflow-y: scroll;
-    }
-
-    .item {
         display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem 1rem;
-
-        margin-bottom: 0.2rem;
-        padding: 0.5rem 1.7rem;
-        width: 100%;
-        min-height: 3rem;
-
-        &:hover {
-            cursor: pointer;
-        }
+        flex-flow: column;
+        gap: 5px;
+        height: 380px;
+        width: 600px;
+        overflow-y: scroll;
     }
 }
 
