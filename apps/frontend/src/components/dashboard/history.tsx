@@ -97,7 +97,11 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
         <div className={styles['projects-history']}>
             <div className={styles['header']}>
-                <T type='h2'>{children}</T>
+                <div style={{marginBottom: '20px'}}>
+                    <T type='h2' internal={{root: {style: {margin: 0}}}}>{children}</T>
+                    <T color='dimmed'>List of projects</T>
+                </div>
+
                 <div className={styles['search-options']}>
                     <Field label='Search' onChange={searchProjects} />
                 </div>

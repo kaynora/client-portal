@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from 'react'
 import styles from './projects.module.css'
-import Image from "next/image"
-import { Button, T } from "@kaynora/ui"
+import Image from 'next/image'
+import { Button, T } from '@kaynora/ui'
 
 interface ProjectHeader {
     id: string,
@@ -298,7 +298,10 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
     return (
         <div className={styles['projects-container']}>
-            <T type='h2'>{children}</T>
+            <div style={{marginBottom: '20px'}}>
+                <T type='h2' internal={{root: {style: {margin: 0}}}}>{children}</T>
+                <T color='dimmed'>Active projects</T>
+            </div>
 
             <div ref={sliderRef} className={styles['projects-slider']}>
                 <button
@@ -307,13 +310,13 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                     tabIndex={showButtons[0] ? 0 : -1}
                 >
                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="36px" viewBox="0 -960 960 960" width="36px"
+                        xmlns='http://www.w3.org/2000/svg'
+                        height='36px' viewBox='0 -960 960 960' width='36px'
                     >
                         <path 
-                            d="M560-267.69 347.69-480 
+                            d='M560-267.69 347.69-480 
                             560-692.31 588.31-664l-184 
-                            184 184 184L560-267.69Z"
+                            184 184 184L560-267.69Z'
                         />
                     </svg>
                 </button>

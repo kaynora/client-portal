@@ -59,7 +59,11 @@ const Clients = () => {
     return (
         <div className={styles['client-list']}>
             <div className={styles['header']}>
-                <h2>Clients</h2>
+                <div style={{marginBottom: '20px'}}>
+                    <T type='h2' internal={{root: {style: {margin: 0}}}}>Clients</T>
+                    <T color='dimmed'>Active accounts</T>
+                </div>
+
                 <div className={styles['search-options']}>
                     <Field label='Search' onChange={searchClients} />
                 </div>

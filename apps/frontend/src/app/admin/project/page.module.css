@@ -15,8 +15,8 @@
     padding: 2rem;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    gap: 0.25rem 3rem;
+    /* justify-content: space-around; */
+    gap: 25px 80px;
 }
 
 .detail {
