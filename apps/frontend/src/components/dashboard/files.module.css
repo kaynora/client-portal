@@ -3,22 +3,63 @@
 }
 
 .file-list {
-    gap: 0.75rem 0;
+    position: relative;
+    margin-top: 20px;
+    gap: 10px 10px;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+
+    .empty {
+        width: 100%;
+        display: block;
+        position: relative;
+        height: fit-content;
+        margin-top: 6rem;
+        text-align: center;
+    }
 }
 
 .file {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: calc(50% - 0.5rem);
-    height: 10rem;
-    padding: 2rem;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    height: 150px;
 
     &:hover {
         cursor: pointer;
     }
+}
+
+.date {
+    width: 100%;
+    text-align: right;
+}
+
+.modal-content {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+}
+
+.drop-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 250px;
+    border: 2px dashed var(--gray-3);
+    border-radius: 5px;
+    user-select: none;
+    transform: all var(--ease-out-c) var(--ease-out-t);
+}
+
+.skeleton {
+    width: 30%;
+    height: 170px;
+    border-radius: 5px;
+    background-color: red;
+    background-color: var(--gray-1);
+    background: linear-gradient(160deg, var(--gray-1), var(--background));
+    animation: ease-in 0.3s infinite alternate shimmer;
 }
