@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import styles from './files.module.css'
-import { Button, Message, T } from '@kaynora/ui'
+import { Button, DropdownMenu, Ellipsis, Message, Popover, T } from '@kaynora/ui'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import Details from './details'
 
 const Modal = dynamic(
   () => import('@kaynora/ui').then(mod => mod.Modal),
@@ -65,6 +66,26 @@ const Files = () => {
             }
 
             setShowModal(false)
+            window.location.reload()
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const deleteFile = async (id: string) => {
+        const params = new URLSearchParams(window.location.search)
+        const paramProjectID = params.get('project_id')
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/admin/project/delete-file?project_id=${paramProjectID}&file_id=${id}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            })
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`)
+            }
+
             window.location.reload()
         } catch (err) {
             console.log(err)
@@ -145,16 +166,20 @@ const Files = () => {
                     ? fileHeaders?.map((file, index) => (
                         <Button
                             key={index}
+                            href='#'
                             internal={{root: {style: {
                                 width: '30%',
                                 minWidth: '250px',
                             }}}}
                         >
                             <div className={styles['file']}>
-                                <T>{file.file_name}</T>
+                                <div className={styles['header']}>
+                                    <T>{file.file_name}</T>
+                                    <Details deleteFile={deleteFile} fileId={file.id} />
+                                </div>
                                 <div className={styles['date']}>
-                                    <T weight='300' color='dimmed'>Uploaded: </T>
-                                    <T>{new Date(file.created_at).toLocaleDateString()}</T>
+                                    <T size='s' weight='300' color='dimmed'>Uploaded: </T>
+                                    <T size='s'>{new Date(file.created_at).toLocaleDateString()}</T>
                                 </div>
                             </div></Button>
                     ))

@@ -41,7 +41,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             href='/admin'
                             internal={{
                                 root: {style: {
-                                    color: isClient && window.location.pathname === '/admin' ? '#303030' : '#141414',
                                     display: 'flex',
                                     flexFlow: 'row nowrap',
                                     alignItems: 'center',
@@ -65,7 +64,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             href='/admin/projects'
                             internal={{
                                 root: {style: {
-                                    color: isClient && window.location.pathname.startsWith('/admin/project') ? '#303030' : '#141414',
                                     display: 'flex',
                                     flexFlow: 'row nowrap',
                                     alignItems: 'center',
@@ -89,7 +87,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             href='/admin/clients'
                             internal={{
                                 root: {style: {
-                                    color: isClient && window.location.pathname.startsWith('/admin/client') ? '#303030' : '#141414',
                                     display: 'flex',
                                     flexFlow: 'row nowrap',
                                     alignItems: 'center',
