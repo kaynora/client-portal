@@ -16,10 +16,11 @@ const Details: React.FC<DetailsInterface> = ({ deleteFile, fileId }) => {
         surface='text'
         onClick={(e) => {
           e.preventDefault()
+          e.stopPropagation()
           setShowDropdown(true)
         }}
         internal={{root: {
-          onBlur: () => setTimeout(() => setShowDropdown(false), 100)
+          onBlur: () => setTimeout(() => setShowDropdown(false), 100),
         }}}
       >
         <Ellipsis />
@@ -34,6 +35,7 @@ const Details: React.FC<DetailsInterface> = ({ deleteFile, fileId }) => {
         <Menu items={[
           {label: 'Delete file', onClick: (e) => {
             e.preventDefault()
+            e.stopPropagation()
             deleteFile(fileId)
           }}
         ]} />

@@ -22,6 +22,7 @@ router.put('/set-project-status', project.set_project_status)
 router.put('/assign-client', project.assign_client)
 
 router.put('/upload-file', upload.single('file'), file.upload_file)
+router.get('/get-all-file-headers', file.get_all_file_headers)
 router.get('/get-file-headers', file.get_file_headers)
 router.get('/get-file', file.get_file)
 router.delete('/delete-file', file.delete_file)

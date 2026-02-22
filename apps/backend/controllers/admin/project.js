@@ -35,8 +35,7 @@ const get_project_headers = async (req, res) => {
             WHERE p.admin_id = $1
 
             ${status === 'active'
-                ? ` AND (p.current_status = 'In Progress'
-                    OR   p.current_status = 'Paused') `
+                ? ` AND (p.current_status = 'In Progress') `
                 : "" }
 
             ${(isFinite(+client_id) && client_id.trim() !== '')
@@ -120,7 +119,7 @@ const sort_active_projects = async (req, res) => {
             await db.none(`
                 UPDATE projects SET sort_index = $3
                 WHERE admin_id = $1 AND id = $2 AND
-                    (current_status = 'In Progress' OR current_status = 'Paused')
+                    (current_status = 'In Progress')
             `, [admin_id, project_id, sort_index])
         }
 

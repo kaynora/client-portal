@@ -92,6 +92,31 @@ const Files = () => {
         }
     }
 
+    const downloadFile = async (id: string, filename: string) => {
+        const params = new URLSearchParams(window.location.search)
+        const paramProjectID = params.get('project_id')
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/admin/project/get-file?project_id=${paramProjectID}&file_id=${id}`, {
+                method: 'GET',
+                credentials: 'include'
+            })
+
+            const blob = await response.blob()
+            const url = window.URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = filename
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+
+            window.URL.revokeObjectURL(url)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     useEffect(() => {
         getFileHeaders()
     }, [])
@@ -167,6 +192,7 @@ const Files = () => {
                         <Button
                             key={index}
                             href='#'
+                            onClick={() => downloadFile(file.id, file.file_name)}
                             internal={{root: {style: {
                                 width: '30%',
                                 minWidth: '250px',

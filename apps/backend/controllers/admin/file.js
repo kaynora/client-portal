@@ -37,19 +37,43 @@ const get_file_headers = async (req, res) => {
     }
 }
 
+const get_all_file_headers = async (req, res) => {
+    const admin_id = req.admin_id
+
+    try {
+        const query_result = await db.any(`
+            SELECT * FROM files
+            WHERE admin_id = $1
+        `, [admin_id])
+
+        res.status(200).send(query_result)
+    } catch (err) {
+        console.log(err)
+        res.status(401).send('Failed to get all file headers')
+    }
+}
+
 const get_file = async (req, res) => {
-    const admin_id = req.admin_id;
-    const project_id = req.query.project_id;
-    const file_id = req.query.file_id;
+    const admin_id = req.admin_id
+    const project_id = req.query.project_id
+    const file_id = req.query.file_id
 
     try {
         const query_result = await db.one(`
-            SELECT id FROM files
+            SELECT id, file_name FROM files
             WHERE id = $1 AND admin_id = $2 AND project_id = $3
         `, [file_id, admin_id, project_id])
 
-        const stream = await mc.getObject('main-bucket', `${admin_id}/${project_id}/${query_result.id}`)
-        return res.status(200).send('File received')
+        const stream = await mc.getObject(
+            'main-bucket',
+            `${admin_id}/${project_id}/${query_result.id}`
+        )
+
+        // res.setHeader('Content-Type', query_result.mimetype)
+        res.setHeader('Content-Disposition', `attachment; filename="${query_result.file_name}"`)
+        res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition')
+
+        stream.pipe(res)
     } catch (err) {
         console.log(err)
         res.status(404).send('File not found')
@@ -79,6 +103,7 @@ const delete_file = async (req, res) => {
 module.exports = {
     upload_file,
     get_file_headers,
+    get_all_file_headers,
     get_file,
     delete_file
 }
