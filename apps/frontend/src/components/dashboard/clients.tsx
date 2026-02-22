@@ -70,21 +70,27 @@ const Clients = () => {
                 </div>
             </div>
 
-            {filteredClients.length !== 0
-                ? filteredClients.map((element, index) => (
-                    <Button
-                        key={index}
-                        href={`/admin/client?client_id=${element.id}`}
-                        internal={{root: {draggable: 'false'}}}
-                    >
-                        <T>{element.full_name}</T>
-                        <T>{element.email}</T>
-                    </Button>))
-                : isLoading
-                    ? [...Array(6).keys()].map((value) => (
-                        <div key={value} className={styles['skeleton']}></div>))
-                    : <span className={styles['empty']}>No clients</span>
-            }
+            <div className={styles['clients']}>
+                {filteredClients.length !== 0
+                    ? filteredClients.map((element, index) => (
+                        <Button
+                            key={index}
+                            href={`/admin/client?client_id=${element.id}`}
+                            internal={{root: {draggable: 'false'}}}
+                        >
+                            <T>{element.full_name}</T>
+
+                            <div className={styles['detail']}>
+                                <T weight='300' color='dimmed' size='s'>Email:</T>
+                                <T size='s'>{element.email}</T>
+                            </div>
+                        </Button>))
+                    : isLoading
+                        ? [...Array(6).keys()].map((value) => (
+                            <div key={value} className={styles['skeleton']}></div>))
+                        : <span className={styles['empty']}>No clients</span>
+                }
+            </div>
         </div>
     )
 }

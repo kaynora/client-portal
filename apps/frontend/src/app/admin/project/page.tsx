@@ -88,6 +88,7 @@ const ProjectPage = () => {
     const assignClient = async (event: React.MouseEvent) => {
         const params = new URLSearchParams(window.location.search)
         const paramsProjectID = params.get('project_id')
+        console.log(event.currentTarget)
 
         try {
             const response = await fetch(`http://localhost:3000/api/admin/project/assign-client?project_id=${paramsProjectID}`, {
@@ -97,7 +98,7 @@ const ProjectPage = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    client_id: event.currentTarget.getAttribute('data-id')
+                    client_id: event.currentTarget.querySelector('div')!.getAttribute('data-id')
                 })
             })
 
@@ -336,13 +337,13 @@ const ProjectPage = () => {
                                     width='full'
                                     onClick={assignClient}
                                     key={index}
-                                    data-id={element.id}
-                                    internal={{root: {style: {
+                                    internal={{root: { style: {
                                         display: 'flex',
                                         flexFlow: 'row nowrap',
                                         justifyContent: 'space-between'
                                     }}}}
                                 >
+                                    <div data-id={element.id} style={{display: 'none'}}></div>
                                     <T>{element.full_name}</T>
                                     <T>{element.email}</T>
                                 </Button>
