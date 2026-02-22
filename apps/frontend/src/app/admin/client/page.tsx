@@ -1,6 +1,7 @@
 'use client'
 
 import History from '@/components/dashboard/history'
+import { T } from '@kaynora/ui'
 import { useEffect, useState } from 'react'
 
 interface ClientHeader {
@@ -41,13 +42,16 @@ const Client = () => {
 
     return (
         <div>
-            <h2>Client Info</h2>
+            <div style={{marginBottom: '20px'}}>
+                <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Info</T>
+                <T color='dimmed'>Client details</T>
+            </div>
 
             <div>
                 {clientHeader?.full_name}
             </div>
 
-            <History>Assigned Projects</History>
+            <History>History</History>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import styles from './history.module.css'
 import { useEffect, useState } from 'react'
-import { Button, Field, T } from '@kaynora/ui'
+import { Button, T } from '@kaynora/ui'
+import CustomField from './customfield'
 
 interface ProjectHistoryHeader {
     id: string,
@@ -98,12 +99,12 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
         <div className={styles['projects-history']}>
             <div className={styles['header']}>
                 <div style={{marginBottom: '20px'}}>
-                    <T type='h2' internal={{root: {style: {margin: 0}}}}>{children}</T>
+                    <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>{children}</T>
                     <T color='dimmed'>List of projects</T>
                 </div>
 
                 <div className={styles['search-options']}>
-                    <Field label='Search' onChange={searchProjects} />
+                    <CustomField label='Search' onChange={searchProjects} />
                 </div>
             </div>
 

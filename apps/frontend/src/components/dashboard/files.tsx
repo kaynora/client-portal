@@ -91,7 +91,11 @@ const Files = () => {
 
     return (
         <div className={styles['files']}>
-            <T type='h2'>Project Files</T>
+            <div style={{marginBottom: '20px'}}>
+                <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Uploads</T>
+                <T color='dimmed'>Shared files</T>
+            </div>
+
             <Button
                 onClick={() => setShowModal(true)}
                 internal={{root: {style: {
@@ -147,7 +151,7 @@ const Files = () => {
                             }}}}
                         >
                             <div className={styles['file']}>
-                                <T weight='300' size='xl'>{file.file_name}</T>
+                                <T>{file.file_name}</T>
                                 <div className={styles['date']}>
                                     <T weight='300' color='dimmed'>Uploaded: </T>
                                     <T>{new Date(file.created_at).toLocaleDateString()}</T>

@@ -4,7 +4,8 @@ import { useState } from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
 import GlowBackground from '@/components/design/glowBackground'
-import { Button, Field, T } from '@kaynora/ui'
+import { Button, T } from '@kaynora/ui'
+import CustomField from '@/components/dashboard/CustomField'
 
 const Login = () => {
     const [failedLogin, setFailedLogin] = useState<Boolean>(false)
@@ -69,8 +70,8 @@ const Login = () => {
                             <p>Incorrect username or password.</p>
                         </div>
 
-                        <Field label='Email' type='email' name='email' />
-                        <Field label='Password' name='password' />
+                        <CustomField label='Email' type='email' name='email' />
+                        <CustomField label='Password' name='password' />
 
                         <Button surface='fill'><T>Login</T></Button>
                     </form>

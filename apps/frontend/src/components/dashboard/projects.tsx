@@ -299,7 +299,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
         <div className={styles['projects-container']}>
             <div style={{marginBottom: '20px'}}>
-                <T type='h2' internal={{root: {style: {margin: 0}}}}>{children}</T>
+                <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>{children}</T>
                 <T color='dimmed'>Active projects</T>
             </div>
 

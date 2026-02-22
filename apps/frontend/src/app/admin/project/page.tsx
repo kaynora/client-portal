@@ -194,7 +194,10 @@ const ProjectPage = () => {
 
     return (
         <div>
-            <h2>Project Info</h2>
+            <div style={{marginBottom: '20px'}}>
+                <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Info</T>
+                <T color='dimmed'>Project details</T>
+            </div>
 
             <div className={styles['details']}>
                 <div className={styles['detail']}>

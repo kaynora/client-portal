@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 import styles from './clients.module.css'
-import { Button, Field, T } from "@kaynora/ui"
+import { Button, T } from '@kaynora/ui'
+import CustomField from './customfield'
 
 interface ClientHeader {
     id: string,
@@ -60,12 +61,12 @@ const Clients = () => {
         <div className={styles['client-list']}>
             <div className={styles['header']}>
                 <div style={{marginBottom: '20px'}}>
-                    <T type='h2' internal={{root: {style: {margin: 0}}}}>Clients</T>
+                    <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Clients</T>
                     <T color='dimmed'>Active accounts</T>
                 </div>
 
                 <div className={styles['search-options']}>
-                    <Field label='Search' onChange={searchClients} />
+                    <CustomField label='Search' onChange={searchClients} />
                 </div>
             </div>
 

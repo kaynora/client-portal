@@ -1,27 +1,12 @@
-.dashboard-layout {
+.buttons {
     display: flex;
-    flex-flow: row nowrap;
-    margin: auto;
-    /* height: 100vh;
-    width: 95vw; */
-    gap: 6rem;
+    flex-flow: column;
     justify-content: space-between;
-    align-items: center;
-    background-color: #141414;
+    height: 100%;
 }
 
-.content {
-    background-color: #fff;
-    flex: 1;
-    margin-left: 280px;
+.content-wrapper {
+    background-color: #fbfbfb;
     padding: 40px;
     min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    h2 {
-        margin-bottom: 40px;
-        font-weight: 400;
-        font-size: 1.8rem;
-    }
 }

@@ -5,7 +5,7 @@ import History from '@/components/dashboard/history'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-import { Button, T, Field } from '@kaynora/ui'
+import { Button, Field, T } from '@kaynora/ui'
 import dynamic from 'next/dynamic'
 
 const Modal = dynamic(
