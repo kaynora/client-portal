@@ -182,7 +182,11 @@ const Files = () => {
                         >{isDraggedOver ? 'Release to upload' : 'Drag & drop file here'}</T>
                     </div>
 
-                    <Message color='error' isVisible={fileCountError}><T>Only one file can be uploaded at a time.</T></Message>
+                    <Message
+                        color='error'
+                        isVisible={fileCountError}
+                        surface='text'
+                    ><T>Only one file can be uploaded at a time.</T></Message>
                 </div>
             </Modal>
 

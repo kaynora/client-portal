@@ -140,11 +140,11 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
         const rect = element.parentElement!.parentElement!.getBoundingClientRect()
         dragPlaceholderRef.current!.style.display = 'block'
         element.style.position = 'absolute'
-        element.style.top = `calc(${clientY}px - ${rect.top}px + 2rem)`
-        element.style.left = `calc(${clientX}px - ${rect.left}px - 21.5rem)`
+        element.style.top = `calc(${clientY}px - ${rect.top}px + 50px)`
+        element.style.left = `calc(${clientX}px - ${rect.left}px - 334px)`
         element.style.transition = 'all 0s'
         element.style.zIndex = `13`
-        element.parentElement!.style.gap = '2rem'
+        element.parentElement!.style.gap = '32px'
     }
 
     const handleDrag = (event: MouseEvent) => {
@@ -155,8 +155,8 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
         const { clientX, clientY } = event
         const rect = element.parentElement!.parentElement!.getBoundingClientRect()
-        element.style.top = `calc(${clientY}px - ${rect.top}px + 2rem)`
-        element.style.left = `calc(${clientX}px - ${rect.left}px - 21.5rem)`
+        element.style.top = `calc(${clientY}px - ${rect.top}px + 50px)`
+        element.style.left = `calc(${clientX}px - ${rect.left}px - 334px)`
     }
 
     const endDrag = () => {
@@ -218,7 +218,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                 clientY > rect.top - 20)
             ) {
                 if (dragTargetRef.current !== null) {
-                    ;(project as HTMLElement).style.marginLeft = '6rem'
+                    ;(project as HTMLElement).style.marginLeft = '96px'
                     dropBeforeRef.current = (project as HTMLElement)
 
                     break
@@ -234,7 +234,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                 clientY > rect.top - 20)
             ) {
                 if (dragTargetRef.current !== null) {
-                    ;(project as HTMLElement).style.marginRight = '6rem'
+                    ;(project as HTMLElement).style.marginRight = '96px'
                     dropAfterRef.current = (project as HTMLElement)
 
                     break
@@ -306,12 +306,12 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
             <div ref={sliderRef} className={styles['projects-slider']}>
                 <button
                     style={showButtons[0] ? {opacity: 0.5, pointerEvents: 'all'} : {opacity: 0, pointerEvents: 'none'}}
-                    onClick={() => scrollSlider(-300)} className={styles['arrow-left']}
+                    onClick={() => scrollSlider(-500)} className={styles['arrow-left']}
                     tabIndex={showButtons[0] ? 0 : -1}
                 >
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
-                        height='36px' viewBox='0 -960 960 960' width='36px'
+                        height='30px' viewBox='0 -960 960 960' width='30px'
                     >
                         <path 
                             d='M560-267.69 347.69-480 
@@ -323,12 +323,12 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
                 <button
                     style={showButtons[1] ? {opacity: 0.5, pointerEvents: 'all'} : {opacity: 0, pointerEvents: 'none'}}
-                    onClick={() => scrollSlider(300)} className={styles['arrow-right']}
+                    onClick={() => scrollSlider(500)} className={styles['arrow-right']}
                     tabIndex={showButtons[1] ? 0 : -1}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        height="36px" viewBox="0 -960 960 960" width="36px"
+                        height="30px" viewBox="0 -960 960 960" width="30px"
                     >
                         <path 
                             d="m531.69-480-184-184L376-692.31 
@@ -346,7 +346,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                 isLoading
 
                                 ?
-                                    [...Array(3).keys()].map((value) =>(
+                                    [...Array(4).keys()].map((value) =>(
                                         <div key={value} className={styles['skeleton']}></div>
                                     ))
 
@@ -371,9 +371,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                                 />
                                             </div>
 
-                                            <span>
-                                                {element.title}
-                                            </span>
+                                            <T>{element.title}</T>
                                         </Button>
                                     ))
                             }
