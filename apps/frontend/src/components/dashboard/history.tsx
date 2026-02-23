@@ -98,7 +98,7 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return (
         <div className={styles['projects-history']}>
             <div className={styles['header']}>
-                <div style={{marginBottom: '20px'}}>
+                <div>
                     <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>{children}</T>
                     <T color='dimmed'>List of projects</T>
                 </div>
@@ -109,39 +109,46 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
             </div>
 
             <div className={styles['projects-list']}>
+                <div className={styles['table-header']}>
+                    <T weight='500'>Project Title</T>
+                    <div className={styles['details']}>
+                        <T weight='500'>Client Name</T>
+                        <T weight='500'>Created</T>
+                        <T weight='500'>Updated</T>
+                        <T weight='500'>Status</T>
+                    </div>
+                </div>
+
                 {filteredHeaders.length !== 0
                     ? filteredHeaders.map((element, index) => (
                         <Button
                             key={index}
                             href={`/admin/project?project_id=${element.id}`}
                             internal={{root: {draggable: 'false'}}}
-
                         >
-                            <T>{element.title}</T>
+                            <T
+                                internal={{root: {style: {width: '200px'}}}}
+                                size='s'
+                                color='dimmed'
+                            >{element.title}</T>
+
                             <div className={styles['details']}>
-                                <div className={styles['detail']}>
-                                    <T color='dimmed' weight='300' size='s'>Client:</T>
-                                    <T size='s'>
-                                        {element.full_name !== null
-                                            ? element.full_name
-                                            : 'Not Assigned'
-                                        }
-                                    </T>
-                                </div>
-                                <div className={styles['detail']}>
-                                    <T color='dimmed' weight='300' size='s'>Created:</T>
-                                    <T size='s'>
-                                        {new Date(element.created_at).toLocaleDateString()}
-                                    </T>
-                                </div>
-                                <div className={styles['detail']}>
-                                    <T color='dimmed' weight='300' size='s'>Updated:</T>
-                                    <T size='s'>
-                                        {getTimeSince(element.updated_at)}
-                                    </T>
-                                </div>
-                                <div className={styles['detail']}>
-                                    <T color='dimmed' weight='300' size='s'>Status:</T>
+                                <T size='s' color='dimmed'>
+                                    {element.full_name !== null
+                                        ? element.full_name
+                                        : 'Not Assigned'
+                                    }
+                                </T>
+
+                                <T size='s' color='dimmed'>
+                                    {new Date(element.created_at).toLocaleDateString()}
+                                </T>
+
+                                <T size='s' color='dimmed'>
+                                    {getTimeSince(element.updated_at)}
+                                </T>
+
+                                <div>
                                     <div
                                         className={styles['status']}
                                         style={
@@ -155,13 +162,17 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                                 {backgroundColor: '#3da45a'} : {}
                                         }
                                     >
-                                        <T color='inverted' weight='500' size='s'>{element.current_status}</T>
+                                        <T
+                                            color='inverted'
+                                            size='s'
+                                            internal={{root: {style: {fontSize: '0.85rem'}}}}
+                                        >{element.current_status}</T>
                                     </div>
                                 </div>
                             </div>
                         </Button>))
                     : isLoading
-                        ? [...Array(6).keys()].map((value) => (
+                        ? [...Array(10).keys()].map((value) => (
                             <div key={value} className={styles['skeleton']}></div>))
                         : <span className={styles['empty']}>No project history</span>
                 }

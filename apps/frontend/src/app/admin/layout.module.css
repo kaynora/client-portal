@@ -9,4 +9,8 @@
     background-color: #fbfbfb;
     padding: 40px;
     min-height: 100vh;
+
+    @media screen and (max-width: 500px) {
+        padding: 40px 20px;
+    }
 }

@@ -67,6 +67,5 @@
     border-radius: 5px;
     background-color: red;
     background-color: var(--gray-1);
-    background: linear-gradient(160deg, var(--gray-1), var(--background));
-    animation: ease-in 0.3s infinite alternate shimmer;
+    animation: ease-in 0.5s infinite alternate shimmer;
 }

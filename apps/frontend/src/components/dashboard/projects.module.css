@@ -114,14 +114,13 @@
     width: 24rem;
     padding: 1.5rem;
     background-color: var(--gray-1);
-    background: linear-gradient(135deg, var(--gray-1), var(--background));
     border-radius: 5px;
     z-index: 11;
 
-    animation: ease-in 0.3s infinite alternate shimmer;
+    animation: ease-in 0.5s infinite alternate shimmer;
 }
 
 @keyframes shimmer {
-  0% { opacity: 0.6; }
+  0% { opacity: 0.2; }
   100% { opacity: 1; }
 }

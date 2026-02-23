@@ -72,14 +72,11 @@
     padding: 10px 30px;
     border-radius: 5px;
     margin-bottom: 0.4rem;
-
     background-color: var(--gray-1);
-    background: linear-gradient(160deg, var(--gray-1), var(--background));
-
-    animation: ease-in 0.3s infinite alternate shimmer;
+    animation: ease-in 0.5s infinite alternate shimmer;
 }
 
 @keyframes shimmer {
-  0% { opacity: 0.6; }
+  0% { opacity: 0.2; }
   100% { opacity: 1; }
 }
