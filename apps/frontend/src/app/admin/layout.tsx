@@ -102,6 +102,29 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             />
                             <T>Clients</T>
                         </Button>
+
+                        <Button
+                            width='full'
+                            surface='hollow'
+                            size='s'
+                            href='/admin/chat'
+                            internal={{
+                                root: {style: {
+                                    display: 'flex',
+                                    flexFlow: 'row nowrap',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                }}
+                            }}
+                        >
+                            <Image
+                                width={16}
+                                height={16}
+                                src='/icons/Chat.svg'
+                                alt='(i)'
+                            />
+                            <T>Chat</T>
+                        </Button>
                     </div>
 
                     <Button

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS admins CASCADE;
 DROP TABLE IF EXISTS clients CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS files CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
 
 
 CREATE TABLE admins (
@@ -59,5 +60,14 @@ CREATE TABLE files (
 	file_type TEXT,
 	file_url TEXT,
 	size_bytes INTEGER,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE messages (
+	id SERIAL PRIMARY KEY,
+	sender_id INTEGER NOT NULL,
+	sender_type TEXT NOT NULL CHECK (sender_type IN ('client', 'admin')),
+	recipient_id INTEGER NOT NULL,
+	message_content TEXT NOT NULL,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

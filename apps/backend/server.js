@@ -1,4 +1,7 @@
 const app = require('./app.js')
+const { startWSS } = require('./websockets/chat.js')
+
+startWSS()
 
 const port = process.env.PORT ?? 3000
 

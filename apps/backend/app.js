@@ -4,6 +4,7 @@ const cors = require('cors')
 const admin_auth = require('./routes/admin/auth.js')
 const admin_project = require('./routes/admin/project.js')
 const admin_client = require('./routes/admin/client.js')
+const admin_chat = require('./routes/admin/chat.js')
 const client_auth = require('./routes/client/auth.js')
 
 const app = express()
@@ -18,6 +19,7 @@ app.use(cookies())
 app.use('/api/admin/auth', admin_auth)
 app.use('/api/admin/project', admin_project)
 app.use('/api/admin/client', admin_client)
+app.use('/api/admin/chat', admin_chat)
 app.use('/api/client/auth', client_auth)
 
 module.exports = app
