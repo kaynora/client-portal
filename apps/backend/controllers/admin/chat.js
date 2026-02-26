@@ -59,7 +59,7 @@ const send_message = async (req, res) => {
   try {
     const query_result = await db.none(`
       INSERT INTO messages (sender_id, sender_type, recipient_id, message_content)
-      VALUES ($1, 'admin', $3, $4)
+      VALUES ($1, 'admin', $2, $3)
     `, [admin_id, client_id, message])
 
     res.status(200).send('Message sent')

@@ -2,30 +2,30 @@ const { WebSocketServer } = require('ws')
 
 const startWSS = (port = 8080) => {
   const wss = new WebSocketServer({ port })
-  const userConnections = new Map()
+  const user_connections = new Map()
 
   wss.on('connection', ws => {
-
     ws.on('message', data => {
       const message = JSON.parse(data)
-      
+      console.log(message)
+
       if (message.type === 'register') {
-        userConnections.set(message.userId, ws)
-      } else if (message.type === 'newMessage') {
-        const recipientWs = userConnections.get(message.recipientId)
-        if (recipientWs && recipientWs.readyState === WebSocket.OPEN) {
-          recipientWs.send(JSON.stringify({
-            type: 'messageNotification',
-            senderId: message.senderId
+        user_connections.set(message.user_id, ws)
+      } else if (message.type === 'new_message') {
+        const recipient_ws = user_connections.get(message.recipient_id)
+        if (recipient_ws && recipient_ws.readyState === WebSocket.OPEN) {
+          recipient_ws.send(JSON.stringify({
+            type: 'message_notification',
+            sender_id: message.sender_id
           }))
         }
       }
     })
 
     ws.on('close', () => {
-      userConnections.forEach((connection, userId) => {
+      user_connections.forEach((connection, user_id) => {
         if (connection === ws) {
-          userConnections.delete(userId)
+          user_connections.delete(user_id)
         }
       })
     })

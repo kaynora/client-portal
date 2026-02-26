@@ -3,15 +3,48 @@
 import Image from 'next/image'
 import styles from './layout.module.css'
 import { Button, Layout, T } from '@kaynora/ui'
-import { useEffect, useState } from 'react'
+import { useContext, createContext, useEffect, useState } from 'react'
 
 interface AdminPageProps {
     children: React.ReactElement[]
 }
 
-const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
-    const [isClient, setIsClient] = useState(false)
+const WebSocketContext = createContext<WebSocket | null>(null)
 
+export const useWebSocket = () => {
+    const context = useContext(WebSocketContext)
+    if (!context) {
+        throw new Error('useWebSocket must be used within WebSocketProvider')
+    }
+    return context
+}
+
+export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const [socket, setSocket] = useState<WebSocket | null>(null)
+
+    useEffect(() => {
+        const ws = new WebSocket('ws://localhost:8080')
+        const message = { type: 'register' }
+
+        ws.addEventListener('open', () => {
+            ws.send(JSON.stringify(message))
+        })
+
+        setSocket(ws)
+
+        return () => {
+            ws.close()
+        }
+    }, [])
+
+    return (
+        <WebSocketContext.Provider value={socket}>
+            {children}
+        </WebSocketContext.Provider>
+    )
+}
+
+const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
     const logOut = async () => {
         const response = await fetch('http://localhost:3000/api/admin/auth/logout', {
             method: 'POST',
@@ -22,8 +55,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
 
         window.location.href = result.redirect
     }
-
-    useEffect(() => setIsClient(true))
 
     return (
         <Layout>
@@ -155,7 +186,9 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
 
             <Layout.Content>
                 <div className={styles['content-wrapper']}>
-                    {children}
+                    <WebSocketProvider>
+                        {children}
+                    </WebSocketProvider>
                 </div>
             </Layout.Content>
         </Layout>
