@@ -56,7 +56,7 @@ const get_project = async (req, res) => {
 
     try {
         const query_result = await db.one(`
-            SELECT p.id, c.full_name, p.title,
+            SELECT p.id, c.full_name, c.id client_id, p.title,
                 p.current_status, p.updated_at, p.created_at
             FROM projects p
             LEFT JOIN clients c

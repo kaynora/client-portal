@@ -371,7 +371,7 @@ const Projects: React.FC<{children: React.ReactNode}> = ({ children }) => {
                                                 />
                                             </div>
 
-                                            <T>{element.title}</T>
+                                            <T size='l' weight='300'>{element.title}</T>
                                         </Button>
                                     ))
                             }

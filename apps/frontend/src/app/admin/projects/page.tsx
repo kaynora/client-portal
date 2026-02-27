@@ -97,7 +97,7 @@ const ProjectsPage = () => {
                 </form>
             </Modal>
 
-            <Projects>Overview</Projects>
+            <Projects>Preview</Projects>
             <History>History</History>
         </>
     )

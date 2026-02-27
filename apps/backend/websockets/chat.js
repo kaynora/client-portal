@@ -7,7 +7,6 @@ const startWSS = (port = 8080) => {
   wss.on('connection', ws => {
     ws.on('message', data => {
       const message = JSON.parse(data)
-      console.log(message)
 
       if (message.type === 'register') {
         user_connections.set(message.user_id, ws)

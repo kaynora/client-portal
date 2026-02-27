@@ -10,7 +10,7 @@
 
     .arrow-left, .arrow-right {
         position: absolute;
-        top: 50%;
+        top: 55%;
         opacity: 0.5;
         backdrop-filter: blur(10px);
         background-color: var(--gray-1);

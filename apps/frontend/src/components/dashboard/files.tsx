@@ -39,7 +39,11 @@ const Files = () => {
             if (result.redirect) {
                 window.location.href = result.redirect
             } else {
-                setFileHeaders(result)
+                const sorted = result.sort((a: FileHeader, b: FileHeader) => {
+                    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+                })
+
+                setFileHeaders(sorted)
                 setIsLoading(false)
             }
         } catch (err) {
@@ -215,7 +219,7 @@ const Files = () => {
                     ))
 
                     : isLoading
-                        ? [...Array(6).keys()].map((value) => (
+                        ? [...Array(9).keys()].map((value) => (
                             <div key={value} className={styles['skeleton']}></div>))
                         : <span className={styles['empty']}>No files</span>
                 }

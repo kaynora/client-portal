@@ -14,7 +14,7 @@
   padding: 15px 20px;
   background-color: var(--background);
   border-right: 1px solid var(--gray-1);
-  overflow: scroll;
+  overflow-y: auto;
   flex-shrink: 0;
 
   button {
@@ -50,7 +50,7 @@
 }
 
 .history {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .message-box {
@@ -89,9 +89,6 @@
 }
 
 .history {
-  /* display: flex;
-  flex-flow: column;
-  justify-content: end; */
   padding: 20px;
   height: calc(100% - 70px);
   overflow-y: scroll;

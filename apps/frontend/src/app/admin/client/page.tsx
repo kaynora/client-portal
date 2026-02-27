@@ -1,5 +1,6 @@
 'use client'
 
+import styles from './page.module.css'
 import History from '@/components/dashboard/history'
 import { T } from '@kaynora/ui'
 import { useEffect, useState } from 'react'
@@ -12,7 +13,12 @@ interface ClientHeader {
 }
 
 const Client = () => {
-    const [clientHeader, setClientHeader] = useState<ClientHeader>()
+    const [clientHeader, setClientHeader] = useState<ClientHeader>({
+        id: '',
+        email: '',
+        full_name: '',
+        created_at: '',
+    })
 
     const getClient = async () => {
         const params = new URLSearchParams(window.location.search)
@@ -41,17 +47,34 @@ const Client = () => {
     }, [])
 
     return (
-        <div>
-            <div style={{marginBottom: '20px'}}>
-                <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Info</T>
-                <T color='dimmed'>Client details</T>
+        <div className={styles['client-container']}>
+            <div className={styles['overview']}>
+                <div style={{marginBottom: '20px'}}>
+                    <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>Overview</T>
+                    <T color='dimmed'>Client details</T>
+                </div>
+
+                <div className={styles['details']}>
+                    <div className={styles['detail']}>
+                        <T weight='300' color='dimmed'>Name:</T>
+                        <T weight='500'>{clientHeader.full_name}</T>
+                    </div>
+
+                    <div className={styles['detail']}>
+                        <T weight='300' color='dimmed'>Email:</T>
+                        <T>{clientHeader.email}</T>
+                    </div>
+
+                    <div className={styles['detail']}>
+                        <T weight='300' color='dimmed'>Joined:</T>
+                        <T>{new Date(clientHeader.created_at).toLocaleDateString()}</T>
+                    </div>
+                </div>
             </div>
 
-            <div>
-                {clientHeader?.full_name}
+            <div className={styles['history-wrapper']}>
+                <History>History</History>
             </div>
-
-            <History>History</History>
         </div>
     )
 }

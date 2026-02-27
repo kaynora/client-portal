@@ -16,17 +16,26 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid var(--gray-2);
+    width: 100%;
+
+    span:first-of-type {
+        width: 200px;
+    }
 }
 
 .details {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: right;
-    gap: 0.25rem 3rem;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .details > * {
     width: 125px;
+}
+
+.table-content {
+    min-width: 800px;
 }
 
 .projects-history {
@@ -36,8 +45,6 @@
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-        justify-content: space-between;
-        gap: 1rem 2rem;
 
         width: 100%;
         min-height: 55px;
@@ -73,6 +80,8 @@
 
 .projects-list {
     position: relative;
+    overflow-x: auto;
+    /* width: max-content; */
 
     .empty {
         display: block;

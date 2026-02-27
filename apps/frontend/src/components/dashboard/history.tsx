@@ -109,73 +109,75 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
             </div>
 
             <div className={styles['projects-list']}>
-                <div className={styles['table-header']}>
-                    <T weight='500'>Project Title</T>
-                    <div className={styles['details']}>
-                        <T weight='500'>Client Name</T>
-                        <T weight='500'>Created</T>
-                        <T weight='500'>Updated</T>
-                        <T weight='500'>Status</T>
+                <div className={styles['table-content']}>
+                    <div className={styles['table-header']}>
+                        <div className={styles['details']}>
+                            <T weight='500'>Project Title</T>
+                            <T weight='500'>Client Name</T>
+                            <T weight='500'>Created</T>
+                            <T weight='500'>Updated</T>
+                            <T weight='500'>Status</T>
+                        </div>
                     </div>
-                </div>
 
-                {filteredHeaders.length !== 0
-                    ? filteredHeaders.map((element, index) => (
-                        <Button
-                            key={index}
-                            href={`/admin/project?project_id=${element.id}`}
-                            internal={{root: {draggable: 'false'}}}
-                        >
-                            <T
-                                internal={{root: {style: {width: '200px'}}}}
-                                size='s'
-                                color='dimmed'
-                            >{element.title}</T>
+                    {filteredHeaders.length !== 0
+                        ? filteredHeaders.map((element, index) => (
+                            <Button
+                                key={index}
+                                href={`/admin/project?project_id=${element.id}`}
+                                internal={{root: {draggable: 'false'}}}
+                            >
+                                <div className={styles['details']}>
+                                    <T
+                                        internal={{root: {style: {width: '200px'}}}}
+                                        size='s'
+                                        color='dimmed'
+                                    >{element.title}</T>
 
-                            <div className={styles['details']}>
-                                <T size='s' color='dimmed'>
-                                    {element.full_name !== null
-                                        ? element.full_name
-                                        : 'Not Assigned'
-                                    }
-                                </T>
-
-                                <T size='s' color='dimmed'>
-                                    {new Date(element.created_at).toLocaleDateString()}
-                                </T>
-
-                                <T size='s' color='dimmed'>
-                                    {getTimeSince(element.updated_at)}
-                                </T>
-
-                                <div>
-                                    <div
-                                        className={styles['status']}
-                                        style={
-                                            element.current_status === 'Cancelled' ?
-                                                {backgroundColor: '#262626'} :
-                                            element.current_status === 'Paused' ?
-                                                {backgroundColor: '#e69a3d'} :
-                                            element.current_status === 'In Progress' ?
-                                                {backgroundColor: '#667aff'} :
-                                            element.current_status === 'Completed' ?
-                                                {backgroundColor: '#3da45a'} : {}
+                                    <T size='s' color='dimmed'>
+                                        {element.full_name !== null
+                                            ? element.full_name
+                                            : 'Not Assigned'
                                         }
-                                    >
-                                        <T
-                                            color='inverted'
-                                            size='s'
-                                            internal={{root: {style: {fontSize: '0.85rem'}}}}
-                                        >{element.current_status}</T>
+                                    </T>
+
+                                    <T size='s' color='dimmed'>
+                                        {new Date(element.created_at).toLocaleDateString()}
+                                    </T>
+
+                                    <T size='s' color='dimmed'>
+                                        {getTimeSince(element.updated_at)}
+                                    </T>
+
+                                    <div>
+                                        <div
+                                            className={styles['status']}
+                                            style={
+                                                element.current_status === 'Cancelled' ?
+                                                    {backgroundColor: '#262626'} :
+                                                element.current_status === 'Paused' ?
+                                                    {backgroundColor: '#e69a3d'} :
+                                                element.current_status === 'In Progress' ?
+                                                    {backgroundColor: '#667aff'} :
+                                                element.current_status === 'Completed' ?
+                                                    {backgroundColor: '#3da45a'} : {}
+                                            }
+                                        >
+                                            <T
+                                                color='inverted'
+                                                size='s'
+                                                internal={{root: {style: {fontSize: '0.85rem'}}}}
+                                            >{element.current_status}</T>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Button>))
-                    : isLoading
-                        ? [...Array(10).keys()].map((value) => (
-                            <div key={value} className={styles['skeleton']}></div>))
-                        : <span className={styles['empty']}>No project history</span>
-                }
+                            </Button>))
+                        : isLoading
+                            ? [...Array(10).keys()].map((value) => (
+                                <div key={value} className={styles['skeleton']}></div>))
+                            : <span className={styles['empty']}>No project history</span>
+                    }
+                </div>
             </div>
         </div>
     )
