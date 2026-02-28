@@ -71,8 +71,8 @@ const ClientsPage = () => {
                 <Image
                     src={'/icons/Add.svg'}
                     alt='Add'
-                    width={24}
-                    height={24}
+                    width={18}
+                    height={18}
                 />
                 <span>
                     New Client

@@ -187,9 +187,9 @@ const Chat = () => {
           />
           <Button surface='hollow'>
             <Image
-                width={16}
-                height={16}
-                src='/icons/Chat.svg'
+                width={20}
+                height={20}
+                src='/icons/Send.svg'
                 alt='(i)'
             />
           </Button>

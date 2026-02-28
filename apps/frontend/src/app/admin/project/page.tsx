@@ -208,8 +208,8 @@ const ProjectPage = () => {
                                 <Image
                                     src={'/icons/Edit.svg'}
                                     alt='change status'
-                                    width={20}
-                                    height={20}
+                                    width={18}
+                                    height={18}
                                 />
                             </Button>
 

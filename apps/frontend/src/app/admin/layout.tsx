@@ -80,12 +80,12 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             }}
                         >
                             <Image
-                                width={16}
-                                height={16}
+                                width={18}
+                                height={18}
                                 src='/icons/Dashboard.svg'
                                 alt='(i)'
                             />
-                            <T>Dashboard</T>
+                            <T>Home</T>
                         </Button>
 
                         <Button
@@ -103,8 +103,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             }}
                         >
                             <Image
-                                width={16}
-                                height={16}
+                                width={18}
+                                height={18}
                                 src='/icons/Projects.svg'
                                 alt='(i)'
                             />
@@ -126,8 +126,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             }}
                         >
                             <Image
-                                width={16}
-                                height={16}
+                                width={18}
+                                height={18}
                                 src='/icons/Clients.svg'
                                 alt='(i)'
                             />
@@ -138,7 +138,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             width='full'
                             surface='hollow'
                             size='s'
-                            href='/admin/chat'
+                            href='/admin/messages'
                             internal={{
                                 root: {style: {
                                     display: 'flex',
@@ -149,12 +149,12 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                             }}
                         >
                             <Image
-                                width={16}
-                                height={16}
+                                width={18}
+                                height={18}
                                 src='/icons/Chat.svg'
                                 alt='(i)'
                             />
-                            <T>Chat</T>
+                            <T>Messages</T>
                         </Button>
                     </div>
 
@@ -176,8 +176,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
                         <Image
                             src='/icons/Logout.svg'
                             alt='(i)'
-                            width={24}
-                            height={24}
+                            width={18}
+                            height={18}
                         />
                         <T>Sign Out</T>
                     </Button>
