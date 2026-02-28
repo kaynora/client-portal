@@ -124,6 +124,7 @@ const Chat = () => {
 
   useEffect(() => {
     historyRef.current?.scrollBy({top: Number.MAX_SAFE_INTEGER, behavior: 'instant'})
+    getAllChats()
   }, [chatMessages])
 
   return (
