@@ -14,7 +14,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
 
     return (
         <>
-            <T size='s' type='h1'>Welcome back, {username}!</T>
+            {/* <T size='s' type='h1'>Welcome back, {username}!</T> */}
             <Metrics />
             <Projects>Preview</Projects>
         </>
