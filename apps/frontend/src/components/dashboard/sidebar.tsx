@@ -5,7 +5,7 @@ import styles from './sidebar.module.css'
 import Image from 'next/image'
 
 interface SidebarProps {
-    children: React.ReactNode
+    children: React.ReactElement | React.ReactElement[]
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {

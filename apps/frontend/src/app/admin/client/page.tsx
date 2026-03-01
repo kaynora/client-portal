@@ -73,7 +73,7 @@ const Client = () => {
             </div>
 
             <div className={styles['history-wrapper']}>
-                <History>History</History>
+                <History />
             </div>
         </div>
     )

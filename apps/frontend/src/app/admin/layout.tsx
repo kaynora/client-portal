@@ -3,45 +3,10 @@
 import Image from 'next/image'
 import styles from './layout.module.css'
 import { Button, Layout, T } from '@kaynora/ui'
-import { useContext, createContext, useEffect, useState } from 'react'
+import { WebSocketProvider } from '@/utils'
 
 interface AdminPageProps {
-    children: React.ReactElement[]
-}
-
-const WebSocketContext = createContext<WebSocket | null>(null)
-
-export const useWebSocket = () => {
-    const context = useContext(WebSocketContext)
-    if (!context) {
-        throw new Error('useWebSocket must be used within WebSocketProvider')
-    }
-    return context
-}
-
-export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [socket, setSocket] = useState<WebSocket | null>(null)
-
-    useEffect(() => {
-        const ws = new WebSocket('ws://localhost:8080')
-        const message = { type: 'register' }
-
-        ws.addEventListener('open', () => {
-            ws.send(JSON.stringify(message))
-        })
-
-        setSocket(ws)
-
-        return () => {
-            ws.close()
-        }
-    }, [])
-
-    return (
-        <WebSocketContext.Provider value={socket}>
-            {children}
-        </WebSocketContext.Provider>
-    )
+    children: any
 }
 
 const AdminPage: React.FC<AdminPageProps> = ({ children }) => {

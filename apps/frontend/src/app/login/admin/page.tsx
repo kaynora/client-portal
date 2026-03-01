@@ -5,7 +5,7 @@ import styles from './page.module.css'
 import Image from 'next/image'
 import GlowBackground from '@/components/design/glowBackground'
 import { Button, T } from '@kaynora/ui'
-import CustomField from '@/components/dashboard/CustomField'
+import CustomField from '@/components/dashboard/customfield'
 
 const Login = () => {
     const [failedLogin, setFailedLogin] = useState<Boolean>(false)

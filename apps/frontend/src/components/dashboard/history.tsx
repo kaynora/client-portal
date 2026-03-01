@@ -12,7 +12,7 @@ interface ProjectHistoryHeader {
     current_status: string
 }
 
-const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
+const History = () => {
     const [projectHeaders, setProjectHeaders] = useState<ProjectHistoryHeader[]>([])
     const [filteredHeaders, setFilteredHeaders] = useState<ProjectHistoryHeader[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -99,7 +99,7 @@ const History: React.FC<{children: React.ReactNode}> = ({ children }) => {
         <div className={styles['projects-history']}>
             <div className={styles['header']}>
                 <div>
-                    <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>{children}</T>
+                    <T type='h2' size='s' weight='500' internal={{root: {style: {margin: 0}}}}>History</T>
                     <T color='dimmed'>List of projects</T>
                 </div>
 

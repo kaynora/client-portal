@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import styles from './dropdown.module.css'
 
 interface DropdownProps {
-    children: React.ReactNode,
+    children: React.ReactElement | React.ReactElement[]
     showDropdown: boolean,
     setShowDropdown: Function
 }
