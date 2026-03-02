@@ -25,7 +25,7 @@ const Client = () => {
         const paramClientID = params.get('client_id')
 
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/client/get-client?client_id=${paramClientID}`, {
+            const response = await fetch(`http://localhost:5050/api/admin/client/get-client?client_id=${paramClientID}`, {
                 method: 'GET',
                 credentials: 'include'
             })

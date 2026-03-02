@@ -7,4 +7,5 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-CMD ["npm", "run", "start"]
+EXPOSE 5049
+CMD ["npm", "run", "start", "--", "-p", "5049"]

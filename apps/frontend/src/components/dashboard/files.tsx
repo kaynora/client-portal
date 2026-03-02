@@ -30,7 +30,7 @@ const Files = () => {
         const paramProjectID = params.get('project_id')
 
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/project/get-file-headers?project_id=${paramProjectID}`, {
+            const response = await fetch(`http://localhost:5050/api/admin/project/get-file-headers?project_id=${paramProjectID}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -59,7 +59,7 @@ const Files = () => {
             const formData = new FormData()
             formData.append('file', file)
 
-            const response = await fetch(`http://localhost:3000/api/admin/project/upload-file?project_id=${paramProjectID}`, {
+            const response = await fetch(`http://localhost:5050/api/admin/project/upload-file?project_id=${paramProjectID}`, {
                 method: 'PUT',
                 body: formData,
                 credentials: 'include'
@@ -81,7 +81,7 @@ const Files = () => {
         const paramProjectID = params.get('project_id')
 
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/project/delete-file?project_id=${paramProjectID}&file_id=${id}`, {
+            const response = await fetch(`http://localhost:5050/api/admin/project/delete-file?project_id=${paramProjectID}&file_id=${id}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })
@@ -101,7 +101,7 @@ const Files = () => {
         const paramProjectID = params.get('project_id')
 
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/project/get-file?project_id=${paramProjectID}&file_id=${id}`, {
+            const response = await fetch(`http://localhost:5050/api/admin/project/get-file?project_id=${paramProjectID}&file_id=${id}`, {
                 method: 'GET',
                 credentials: 'include'
             })
