@@ -10,7 +10,7 @@ const client_auth = require('./routes/client/auth.js')
 const app = express()
 
 app.use(cors({
-    origin: /^https?:\/\/([a-zA-Z0-9-]+\.)*localhost:5049$/,
+    origin: [/^https?:\/\/([a-zA-Z0-9-]+\.)*localhost:5049$/, 'https://portal.noraste.dev'],
     credentials: true
 }))
 app.use(express.json())
