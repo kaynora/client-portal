@@ -96,7 +96,7 @@ const Projects = () => {
         })
 
         try {
-            const response = await fetch('http://localhost:5050/api/admin/project/sort-active-projects', {
+            const response = await fetch(`http://localhost:5050/api/admin/project/sort-active-projects`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

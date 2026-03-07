@@ -72,7 +72,7 @@ const ProjectPage = () => {
         try {
             if (fetchedClients) return
 
-            const response = await fetch('http://localhost:5050/api/admin/client/get-client-headers', {
+            const response = await fetch(`http://localhost:5050/api/admin/client/get-client-headers`, {
                 method: 'GET',
                 credentials: 'include'
             })
