@@ -14,7 +14,7 @@ const Metrics = () => {
 
   const getProjects = async () => {
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/project/get-project-headers`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/get-project-headers`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -57,7 +57,7 @@ const Metrics = () => {
 
   const getAllFileHeaders = async () => {
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/project/get-all-file-headers`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/get-all-file-headers`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -95,7 +95,7 @@ const Metrics = () => {
 
   const getClientHeaders = async () => {
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/client/get-client-headers`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/client/get-client-headers`, {
         method: 'GET',
         credentials: 'include'
       })

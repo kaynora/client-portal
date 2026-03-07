@@ -51,7 +51,7 @@ const ProjectPage = () => {
 
     const getProject = async (paramProjectID: string) => {
         try {
-            const response = await fetch(`http://localhost:5050/api/admin/project/get-project?project_id=${paramProjectID}`, {
+            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/get-project?project_id=${paramProjectID}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -72,7 +72,7 @@ const ProjectPage = () => {
         try {
             if (fetchedClients) return
 
-            const response = await fetch(`http://localhost:5050/api/admin/client/get-client-headers`, {
+            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/client/get-client-headers`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -94,7 +94,7 @@ const ProjectPage = () => {
         console.log(event.currentTarget)
 
         try {
-            const response = await fetch(`http://localhost:5050/api/admin/project/assign-client?project_id=${paramsProjectID}`, {
+            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/assign-client?project_id=${paramsProjectID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {
@@ -118,7 +118,7 @@ const ProjectPage = () => {
         const paramsProjectID = params.get('project_id')
 
         try {
-            const response = await fetch(`http://localhost:5050/api/admin/project/set-project-status?project_id=${paramsProjectID}`, {
+            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/set-project-status?project_id=${paramsProjectID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {

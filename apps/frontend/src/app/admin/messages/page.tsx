@@ -25,7 +25,7 @@ const Chat = () => {
 
   const getAllChats = async () => {
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/chat/get-all-chats`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/chat/get-all-chats`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -54,7 +54,7 @@ const Chat = () => {
     window.history.pushState({}, '', `?client_id=${id}`)
 
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/chat/get-chat-history?client_id=${id}`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/chat/get-chat-history?client_id=${id}`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -90,7 +90,7 @@ const Chat = () => {
     e.target.querySelector('input')!.value = ''
 
     try {
-      const response = await fetch(`http://localhost:5050/api/admin/chat/send-message?client_id=${paramClientID}`, {
+      const response = await fetch(`${process.env.SERVER_HOST}/api/admin/chat/send-message?client_id=${paramClientID}`, {
         method: 'POST',
         body: JSON.stringify({ message }),
         headers: {

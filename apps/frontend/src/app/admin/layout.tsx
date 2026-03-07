@@ -11,7 +11,7 @@ interface AdminPageProps {
 
 const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
     const logOut = async () => {
-        const response = await fetch(`http://localhost:5050/api/admin/auth/logout`, {
+        const response = await fetch(`${process.env.SERVER_HOST}/api/admin/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         })

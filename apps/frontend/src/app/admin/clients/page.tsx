@@ -30,7 +30,7 @@ const ClientsPage = () => {
         if (failedEmptyEmail || failedEmptyName) return
 
         try {
-            const response = await fetch(`http://localhost:5050/api/admin/client/create-client`, {
+            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/client/create-client`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
