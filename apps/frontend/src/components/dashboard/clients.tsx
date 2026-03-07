@@ -16,7 +16,7 @@ const Clients = () => {
 
     const getClients = async () => {
         try {
-            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/client/get-client-headers`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/client/get-client-headers`, {
                 method: 'GET',
                 credentials: 'include'
             })

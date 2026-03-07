@@ -16,7 +16,7 @@ const Login = () => {
         const data = new FormData(event.currentTarget)
 
         try {
-            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/auth/login`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/auth/login`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

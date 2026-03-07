@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     const logOut = async () => {
-        const response = await fetch(`${process.env.SERVER_HOST}/api/admin/auth/logout`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         })

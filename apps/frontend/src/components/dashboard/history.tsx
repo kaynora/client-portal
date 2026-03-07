@@ -22,7 +22,7 @@ const History = () => {
         const paramClientID = params.get('client_id')
 
         try {
-            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/get-project-headers?client_id=${paramClientID}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/project/get-project-headers?client_id=${paramClientID}`, {
                 method: 'GET',
                 credentials: 'include'
             })

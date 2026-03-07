@@ -29,7 +29,7 @@ const ProjectsPage = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.SERVER_HOST}/api/admin/project/create-project`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/project/create-project`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
