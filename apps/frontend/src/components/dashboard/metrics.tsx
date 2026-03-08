@@ -177,8 +177,9 @@ const Metrics = () => {
               <T weight='400' internal={{root: {style: {fontSize: '2.5rem'}}}}>{fileCount}</T>
               <T weight='300' size='s' color='dimmed'>
                 {
-                  (fileCount > filePastCount ? '+' : '-') +
-                    Math.abs(filePastCount - fileCount) + ' from last month'
+                  fileCount === filePastCount ? 'Same as last month' :
+                  ((fileCount > filePastCount ? '+' : '-') +
+                    Math.abs(filePastCount - fileCount) + ' from last month')
                 }
               </T>
             </div>
