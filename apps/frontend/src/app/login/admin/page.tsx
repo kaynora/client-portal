@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { ButtonHTMLAttributes, HTMLAttributes, useState } from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
 import GlowBackground from '@/components/design/glowBackground'
-import { Button, T } from '@kaynora/ui'
+import { Button, Message, T } from '@kaynora/ui'
+import { Alert } from '@kaynora/ui'
 import CustomField from '@/components/dashboard/customfield'
 
 const Login = () => {
@@ -54,26 +55,41 @@ const Login = () => {
                 </div>
 
                 <div className={styles['auth-widget']}>
-                    <Button>
-                        <Image
-                            src='/Google.svg'
-                            alt='(G)'
-                            width={20}
-                            height={20}
-                            priority
-                        />
-                        <span>Login with Google</span>
-                    </Button>
-                    <div className={styles['or-separator']}>or</div>
+                    <div className={styles['info']}>
+                        <T type='h1' size='s' weight='500'>Welcome back</T>
+                        <T color='dimmed'>Sign in with email</T>
+                    </div>
+
                     <form autoComplete='off' onSubmit={handleSubmit} className={styles['auth-form']}>
-                        <div style={failedLogin ? {display: 'block'} : {display: 'none'}} className={styles['login-fail']}>
-                            <p>Incorrect username or password.</p>
-                        </div>
-
                         <CustomField label='Email' type='email' name='email' />
-                        <CustomField label='Password' name='password' />
+                        <CustomField
+                            label='Password'
+                            name='password'
+                            type='password'
+                            internal={{
+                                button: {
+                                    internal: {root: {
+                                        type: 'button'
+                                    } as React.ButtonHTMLAttributes<HTMLButtonElement>}
+                                } as any
+                            }}
+                        />
 
-                        <Button surface='fill'><T>Login</T></Button>
+                        <button
+                            className={styles['login-button']}
+                            type='submit'
+                        >
+                            <T>Sign in</T>
+                        </button>
+
+                        <Message
+                            isVisible={!!failedLogin}
+                            color='error'
+                            surface='text'
+                        >
+                            <Alert />
+                            <T size='s' color='error'>Incorrect username or password.</T>
+                        </Message>
                     </form>
                 </div>
             </div>
