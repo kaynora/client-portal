@@ -10,26 +10,25 @@ const check_session = (session_type, role) => {
         if (subdomain === 'portal') {
             req.admin_id = '1'
             next()
-            return
+        } else {
+            if (!user_id) {
+                return res.status(401).json({ redirect: '/login/admin' })
+            }
+
+            if (role === 'client') {
+                const query_result = await db.one(`
+                    SELECT id FROM admins
+                    WHERE subdomain = $1
+                `, [subdomain])
+    
+                req.admin_id = query_result.id
+                req.client_id = user_id
+            } else if (role === 'admin') {
+                req.admin_id = user_id
+            }
+    
+            next()
         }
-
-        if (!user_id) {
-            return res.status(401).json({ redirect: '/login/admin' })
-        }
-
-        if (role === 'client') {
-            const query_result = await db.one(`
-                SELECT id FROM admins
-                WHERE subdomain = $1
-            `, [subdomain])
-
-            req.admin_id = query_result.id
-            req.client_id = user_id
-        } else if (role === 'admin') {
-            req.admin_id = user_id
-        }
-
-        next()
     }
 }
 
