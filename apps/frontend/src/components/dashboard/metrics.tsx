@@ -163,8 +163,9 @@ const Metrics = () => {
               <T weight='400' internal={{root: {style: {fontSize: '2.5rem'}}}}>{projectCount}</T>
               <T weight='300' size='s' color='dimmed'>
                 {
-                  (projectCount > projectPastCount ? '+' : '-') +
-                    Math.abs(projectPastCount - projectCount) + ' from last month'
+                  projectCount === projectPastCount ? 'Same as last quarter' :
+                  ((projectCount > projectPastCount ? '+' : '-') +
+                    Math.abs(projectPastCount - projectCount) + ' from last month')
                 }
               </T>
             </div>
