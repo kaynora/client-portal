@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import styles from './layout.module.css'
-import { Button, Layout, T } from '@kaynora/ui'
+import { Button, Layout, Select, T } from '@kaynora/ui'
 import { WebSocketProvider } from '@/utils'
 
 interface AdminPageProps {
@@ -23,8 +23,47 @@ const AdminPage: React.FC<AdminPageProps> = ({ children }) => {
 
     return (
         <Layout>
-            <Layout.TopNav>
-                <div></div>
+            <Layout.TopNav internal={{content: {style: {
+                padding: '0 40px'
+            }}}}>
+                <div className={styles['right']}>
+                    <Select
+                        name='language'
+                        label='Language'
+                        value={['en']}
+                        // onChange={updateLang}
+                        items={[
+                        { label: 'EN', value: 'en' },
+                        { label: 'FR', value: 'fr' },
+                        ]}
+                    />
+                    <div className={styles['extra']}>
+                        <Button
+                            surface='hollow'
+                        >
+                        <Image
+                            alt='Notifications'
+                            src='/icons/Bell.svg'
+                            width={18}
+                            height={18}
+                            />
+                        </Button>
+
+                        <Button
+                            surface='hollow'
+                        >
+                        <Image
+                            alt='Settings'
+                            src='/icons/Settings.svg'
+                            width={18}
+                            height={18}
+                            />
+                        </Button>
+                    </div>
+                    <button className={styles['user']}>
+                        <T size='s'>K. Noraste</T>
+                    </button>
+                    </div>
             </Layout.TopNav>
 
             <Layout.SideNav>

@@ -14,3 +14,75 @@
         padding: 40px 20px;
     }
 }
+
+.right {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+
+  div:first-of-type {
+    width: 60px;
+
+    label {
+      display: none;
+    }
+
+    button {
+      height: calc(10px + 1.4rem);
+      border: none;
+
+      &:hover {
+        background-color: var(--gray-1);
+      }
+    }
+
+    button > div {
+      width: fit-content;
+    }
+
+    div:last-of-type button {
+      width: 60px;
+      min-width: 60px;
+    }
+
+    * {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    gap: 10px;
+  }
+}
+
+.extra {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+  align-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.user {
+  padding: 0 10px;
+  border-radius: 99px;
+  border: 1px solid var(--gray-3);
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
+@media screen and (max-width: 500px) {
+  .extra,
+  .right div:first-of-type {
+    display: none !important;
+  }
+}
